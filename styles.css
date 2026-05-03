@@ -230,7 +230,8 @@ section {
 
 #foundry { 
     padding: 100px 5%;
-}
+    background: #0a0a0a;
+} /* <--- ADD THIS TO CLOSE THE FOUNDRY SECTION */
 
 .metric-lbl {
   font-family: 'Share Tech Mono', monospace;
