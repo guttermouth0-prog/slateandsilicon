@@ -14,4 +14,4 @@ A static HTML/CSS site for the Slate & Silicon project.
 
 Your site will be published at:
 
-https://00romanprime.github.io/slateandsilicon
+http://slateandsilicon.com/
