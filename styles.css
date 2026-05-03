@@ -223,22 +223,57 @@ section {
   border-top: 1px solid rgba(176,212,222,0.1);
 }
 
+.hero-metrics {
+    display: flex;
+    gap: 48 px;
+    margin-top: 64 px;
+    padding-top: 40 px;
+    border-top: 1 px solid rgba(176, 212, 222, 0.1);
+}
+
 .metric-item {
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
-#foundry { 
+#foundry {
     padding: 100px 5%;
     background: #0a0a0a;
-} /* <--- ADD THIS TO CLOSE THE FOUNDRY SECTION */
+}
 
 .metric-lbl {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.pillar-tag {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--cyan-border);
+    color: var(--cyan);
+    padding: 6px 12px;
+    align-self: flex-start;
+}
+
+.section-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--cyan);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.section-header h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
 }
 
 /* PILLAR GRID */
