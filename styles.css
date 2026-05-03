@@ -222,12 +222,13 @@ section {
   border-top: 1px solid rgba(176,212,222,0.1);
 }
 
-.metric-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
-  letter-spacing: 0.05em;
-  color: var(--cyan);
-  display: block;
+.metric-item {
+    display: flex;
+    flex-direction: column;
+} /* <--- MAKE SURE THIS BRACE IS HERE */
+
+#foundry { 
+    padding: 100px 5%;
 }
 
 .metric-lbl {
