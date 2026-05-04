@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Store — Slate & Silicon</title>
+  <meta name="description" content="Templates, planners, and wellbeing tools for rebuilding attention. The Slate & Silicon store — analog systems engineered for deep work.">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@300;700;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+
+    /* ── STORE FILTER ── */
+    .store-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 1px solid var(--cyan-border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .store-filters { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+
+    .filter-label {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      color: var(--slate);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-right: 0.35rem;
+    }
+
+    .filter-btn {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid rgba(176,212,222,0.1);
+      background: transparent;
+      padding: 5px 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active { color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim); }
+
+    .store-count {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      color: var(--slate);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── PRODUCT GRID ── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--cyan-border);
+      border: 1px solid var(--cyan-border);
+      margin-top: 2.5rem;
+    }
+
+    .product-card {
+      background: var(--bunker);
+      display: flex;
+      flex-direction: column;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .product-card:hover { background: var(--surface); }
+
+    /* Product mockup area */
+    .product-visual {
+      aspect-ratio: 4/3;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--cyan-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    .product-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(176,212,222,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176,212,222,0.03) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    /* Individual product mockups */
+    .mock {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 180px;
+      background: #0f0f0f;
+      border: 1px solid rgba(176,212,222,0.2);
+      padding: 1.25rem;
+      font-family: var(--mono);
+    }
+
+    .mock-header {
+      font-size: 0.42rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(176,212,222,0.12);
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .mock-line { height: 1px; background: rgba(176,212,222,0.08); margin-bottom: 0.45rem; }
+    .mock-line.short { width: 60%; }
+    .mock-line.med { width: 80%; }
+    .mock-line.accent { background: rgba(176,212,222,0.25); }
+
+    .mock-block {
+      background: rgba(176,212,222,0.04);
+      border-left: 1px solid rgba(176,212,222,0.2);
+      padding: 0.5rem 0.6rem;
+      margin: 0.65rem 0;
+    }
+
+    .mock-label {
+      font-size: 0.38rem;
+      color: rgba(176,212,222,0.4);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .mock-tag {
+      display: inline-block;
+      font-size: 0.38rem;
+      color: var(--cyan);
+      border: 1px solid var(--cyan-border);
+      padding: 1px 5px;
+      letter-spacing: 0.08em;
+      margin-top: 0.5rem;
+    }
+
+    /* Product info */
+    .product-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.85rem;
+    }
+
+    .product-code {
+      font-family: var(--mono);
+      font-size: 0.48rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .product-type {
+      font-family: var(--mono);
+      font-size: 0.48rem;
+      color: var(--slate);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .product-name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+
+    .product-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(176,212,222,0.07);
+      padding-top: 1rem;
+      margin-top: auto;
+    }
+
+    .product-price {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .product-price.free { color: var(--cyan); }
+
+    .product-price span {
+      font-family: var(--mono);
+      font-size: 0.5rem;
+      color: var(--slate);
+      letter-spacing: 0.08em;
+      display: block;
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    .product-btn {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      background: var(--cyan);
+      color: var(--bunker);
+      font-weight: 700;
+      padding: 0.6rem 1rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .product-btn:hover { opacity: 0.82; }
+
+    .product-btn.outline {
+      background: transparent;
+      color: var(--cyan);
+      border: 1px solid var(--cyan-border);
+    }
+    .product-btn.outline:hover { background: var(--cyan-dim); }
+
+    /* Featured product — full width */
+    .product-card.wide {
+      grid-column: span 3;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .product-card.wide .product-visual {
+      aspect-ratio: unset;
+      border-bottom: none;
+      border-right: 1px solid var(--cyan-border);
+    }
+
+    .product-card.wide .product-info {
+      padding: 2.5rem;
+      justify-content: center;
+    }
+
+    .product-card.wide .product-name { font-size: 1.75rem; }
+
+    /* ── TRUST ROW ── */
+    .trust-row {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 2rem 0;
+      border-top: 1px solid var(--cyan-border);
+      border-bottom: 1px solid var(--cyan-border);
+      margin-top: 2.5rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .trust-icon {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--cyan);
+    }
+
+    .trust-text {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    /* ── COMING SOON BANNER ── */
+    .coming-soon {
+      background: var(--surface2);
+      border: 1px solid var(--cyan-border);
+      padding: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1px;
+    }
+
+    .cs-left { display: flex; align-items: center; gap: 1rem; }
+
+    .cs-badge {
+      font-family: var(--mono);
+      font-size: 0.48rem;
+      color: var(--cyan);
+      border: 1px solid var(--cyan-border);
+      background: var(--cyan-dim);
+      padding: 4px 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .cs-text {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    .cs-notify {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid rgba(176,212,222,0.15);
+      background: transparent;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .cs-notify:hover { color: var(--cyan); border-color: var(--cyan-border); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .product-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
+      .product-card.wide .product-visual { border-right: none; border-bottom: 1px solid var(--cyan-border); aspect-ratio: 4/3; }
+    }
+
+    @media (max-width: 720px) {
+      .store-bar { padding: 1.25rem; }
+      .product-grid { grid-template-columns: 1fr; }
+      .product-card.wide { grid-column: span 1; }
+      .trust-row { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="z">
+  <a href="/" class="logo">Slate <em>&</em> Silicon</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/foundry/">The Foundry</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/store/" class="active">The Store</a></li>
+    <li><a href="/log/">The Log</a></li>
+  </ul>
+  <a href="/detox-planner/" class="nav-cta">→ Free Planner</a>
+  <button class="nav-toggle" aria-label="Toggle navigation"
+    onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══ PAGE HERO ══ -->
+<div class="page-hero z">
+  <p class="tag">The Store // Analog Systems</p>
+  <h1>Tools that<br>work offline.</h1>
+  <p class="body-text">Templates, planners, and protocols engineered for deep work. No subscriptions. No accounts. No apps. Download once, use indefinitely.</p>
+</div>
+
+<!-- ══ STORE BAR ══ -->
+<div class="z">
+  <div class="store-bar">
+    <div class="store-filters">
+      <span class="filter-label">Filter //</span>
+      <button class="filter-btn active" onclick="filterProducts('all',this)">All</button>
+      <button class="filter-btn" onclick="filterProducts('planner',this)">Planners</button>
+      <button class="filter-btn" onclick="filterProducts('template',this)">Templates</button>
+      <button class="filter-btn" onclick="filterProducts('protocol',this)">Protocols</button>
+      <button class="filter-btn" onclick="filterProducts('free',this)">Free</button>
+    </div>
+    <span class="store-count" id="count">4 products</span>
+  </div>
+</div>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker z">
+  <div class="ticker-track">
+    <span class="ticker-item">No subscriptions <b>//</b></span>
+    <span class="ticker-item">No accounts <b>//</b></span>
+    <span class="ticker-item">No apps <b>//</b></span>
+    <span class="ticker-item">Download once <b>//</b></span>
+    <span class="ticker-item">Use indefinitely <b>//</b></span>
+    <span class="ticker-item">Works offline by design <b>//</b></span>
+    <span class="ticker-item">Analog systems <b>//</b></span>
+    <span class="ticker-item">No subscriptions <b>//</b></span>
+    <span class="ticker-item">No accounts <b>//</b></span>
+    <span class="ticker-item">No apps <b>//</b></span>
+    <span class="ticker-item">Download once <b>//</b></span>
+    <span class="ticker-item">Use indefinitely <b>//</b></span>
+    <span class="ticker-item">Works offline by design <b>//</b></span>
+    <span class="ticker-item">Analog systems <b>//</b></span>
+  </div>
+</div>
+
+<!-- ══ PRODUCTS ══ -->
+<div class="z">
+  <div class="section">
+
+    <!-- TRUST ROW -->
+    <div class="trust-row reveal">
+      <div class="trust-item"><span class="trust-icon">↓</span><span class="trust-text">Instant PDF download<br>No account needed</span></div>
+      <div class="trust-item"><span class="trust-icon">∞</span><span class="trust-text">Unlimited prints<br>One purchase</span></div>
+      <div class="trust-item"><span class="trust-icon">○</span><span class="trust-text">Works fully offline<br>No internet required</span></div>
+      <div class="trust-item"><span class="trust-icon">←</span><span class="trust-text">30-day refund<br>No questions asked</span></div>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="product-grid reveal" id="product-grid">
+
+      <!-- FEATURED: Daily Ledger — wide -->
+      <div class="product-card wide" data-cat="planner">
+        <div class="product-visual">
+          <div class="mock" style="max-width:220px;">
+            <div class="mock-header">Daily Ledger // S&S-001</div>
+            <div class="mock-block">
+              <div class="mock-label">Sector 01 // Initialization</div>
+              <div class="mock-line"></div>
+              <div class="mock-line med"></div>
+              <div class="mock-line short"></div>
+            </div>
+            <div class="mock-block">
+              <div class="mock-label">Sector 02 // The One Move</div>
+              <div class="mock-line accent"></div>
+              <div class="mock-line short"></div>
+            </div>
+            <div class="mock-block">
+              <div class="mock-label">Sector 03 // Decommission</div>
+              <div class="mock-line"></div>
+              <div class="mock-line med"></div>
+              <div class="mock-line short"></div>
+            </div>
+            <div class="mock-tag">Print & Run</div>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-code">SKU-001 // Featured</span>
+            <span class="product-type">Planner Template</span>
+          </div>
+          <h2 class="product-name">The Daily Ledger</h2>
+          <p class="product-desc">The core planning template. Three sectors per day — Initialization, The One Move, Decommission. Morning intent, single daily priority, evening shutdown. Engineered to run on 10 minutes a day. Includes 30-day supply, weekly review sheet, and the Focus Heatmap.</p>
+          <ul class="include-list" style="margin-bottom:1.5rem;">
+            <li>30-day supply of daily pages</li>
+            <li>Weekly review template</li>
+            <li>Focus Heatmap worksheet</li>
+            <li>Letter + A4 format included</li>
+          </ul>
+          <div class="product-footer">
+            <div class="product-price">
+              $12
+              <span>One-time // Unlimited prints</span>
+            </div>
+            <button class="product-btn">→ Get The Ledger</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Focus Sprint Pack -->
+      <div class="product-card" data-cat="template">
+        <div class="product-visual">
+          <div class="mock">
+            <div class="mock-header">Focus Sprint // S&S-002</div>
+            <div class="mock-line accent"></div>
+            <div class="mock-line med"></div>
+            <div class="mock-block">
+              <div class="mock-label">Sprint // 90 min</div>
+              <div class="mock-line"></div>
+              <div class="mock-line short"></div>
+            </div>
+            <div class="mock-line"></div>
+            <div class="mock-line med"></div>
+            <div class="mock-tag">Deep Work</div>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-code">SKU-002</span>
+            <span class="product-type">Template Pack</span>
+          </div>
+          <h2 class="product-name">Focus Sprint Pack</h2>
+          <p class="product-desc">90-minute deep work session templates. Pre-session setup, mid-sprint check, post-session debrief. Track output quality across sessions and identify your peak performance window.</p>
+          <div class="product-footer">
+            <div class="product-price">
+              $9
+              <span>One-time // 20 sprint sheets</span>
+            </div>
+            <button class="product-btn">→ Get The Pack</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attention Audit Worksheet -->
+      <div class="product-card" data-cat="template">
+        <div class="product-visual">
+          <div class="mock">
+            <div class="mock-header">Attention Audit // S&S-003</div>
+            <div class="mock-block">
+              <div class="mock-label">Leakage // 06:00</div>
+              <div class="mock-line accent" style="width:73%"></div>
+            </div>
+            <div class="mock-block">
+              <div class="mock-label">Leakage // 14:00</div>
+              <div class="mock-line accent" style="width:88%"></div>
+            </div>
+            <div class="mock-block">
+              <div class="mock-label">Leakage // 20:00</div>
+              <div class="mock-line accent" style="width:61%"></div>
+            </div>
+            <div class="mock-tag">Heatmap</div>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-code">SKU-003</span>
+            <span class="product-type">Worksheet</span>
+          </div>
+          <h2 class="product-name">Attention Audit Worksheet</h2>
+          <p class="product-desc">A 24-hour attention heatmap. Log every distraction event across your day. Identify your personal leakage windows. The data tells you where to build friction first.</p>
+          <div class="product-footer">
+            <div class="product-price">
+              $7
+              <span>One-time // 10 worksheets</span>
+            </div>
+            <button class="product-btn">→ Get The Audit</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detox Protocol PDF — FREE -->
+      <div class="product-card" data-cat="protocol free">
+        <div class="product-visual">
+          <div class="mock">
+            <div class="mock-header">Detox Protocol // EXP-01</div>
+            <div class="mock-line"></div>
+            <div class="mock-block">
+              <div class="mock-label">Day 01–07</div>
+              <div class="mock-line"></div>
+              <div class="mock-line short"></div>
+            </div>
+            <div class="mock-line med"></div>
+            <div class="mock-line"></div>
+            <div class="mock-line short"></div>
+            <div class="mock-tag" style="color:var(--cyan);">Free Download</div>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-code">SKU-004 // Free</span>
+            <span class="product-type">Protocol PDF</span>
+          </div>
+          <h2 class="product-name">Detox Protocol PDF</h2>
+          <p class="product-desc">The full 7-day digital detox protocol. Everything in the Detox Planner plus the complete EXP-01 field notes, participant data summary, and the Grayscale 24 instructions.</p>
+          <div class="product-footer">
+            <div class="product-price free">
+              Free
+              <span>Email required // Instant download</span>
+            </div>
+            <button class="product-btn outline">→ Download</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COMING SOON -->
+    <div class="reveal">
+      <div class="coming-soon">
+        <div class="cs-left">
+          <span class="cs-badge">Coming Soon</span>
+          <span class="cs-text">The Deep Work Bundle — All 4 tools. One price.</span>
+        </div>
+        <button class="cs-notify">→ Notify Me</button>
+      </div>
+      <div class="coming-soon" style="margin-top:1px;">
+        <div class="cs-left">
+          <span class="cs-badge">In Development</span>
+          <span class="cs-text">The Quarterly Ledger — 90-day analog operating system</span>
+        </div>
+        <button class="cs-notify">→ Notify Me</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ FOOTER CTA ══ -->
+<div class="section-alt z">
+  <div class="footer-cta">
+    <div class="reveal">
+      <p class="tag">Start Free</p>
+      <h2>Not ready to buy?<br><span class="cyan">Start here.</span></h2>
+      <p class="body-text">The Detox Planner is free. Seven days. Three sectors. No app. It's the best introduction to how the whole system works.</p>
+      <div class="form">
+        <input type="email" placeholder="engineer@domain.com">
+        <button>→ Download Free</button>
+      </div>
+      <p class="form-note" style="text-align:center; margin-top:1rem;">No account. No algorithm. No noise.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="z">
+  <a href="/" class="footer-logo">Slate &amp; Silicon</a>
+  <ul class="footer-links">
+    <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a></li>
+    <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+    <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a></li>
+    <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+    <li><a href="/privacy/">Privacy</a></li>
+    <li><a href="/terms/">Terms</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Slate &amp; Silicon. All systems operational.</span>
+</footer>
+
+<!-- ══ JS ══ -->
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Filter
+  function filterProducts(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cards = document.querySelectorAll('.product-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const cats = card.dataset.cat || '';
+      const show = cat === 'all' || cats.includes(cat);
+      card.style.display = show ? 'flex' : 'none';
+      if (show) visible++;
+    });
+    document.getElementById('count').textContent = visible + ' product' + (visible !== 1 ? 's' : '');
+  }
+</script>
+
+</body>
+</html>
