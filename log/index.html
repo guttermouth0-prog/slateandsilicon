@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Log — Slate & Silicon</title>
+  <meta name="description" content="The Slate & Silicon newsletter archive. Weekly experiment dispatches, field notes, and community accountability for people rebuilding their attention.">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@300;700;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .log-layout { display:grid; grid-template-columns:1fr 300px; gap:5rem; align-items:start; }
+    .issue-list { display:flex; flex-direction:column; gap:1px; background:var(--cyan-border); border:1px solid var(--cyan-border); margin-top:2.5rem; }
+    .issue-card { background:var(--bunker); padding:1.75rem; display:grid; grid-template-columns:80px 1fr auto; gap:1.75rem; align-items:start; text-decoration:none; transition:background 0.2s; }
+    .issue-card:hover { background:var(--surface); }
+    .issue-card.featured { grid-template-columns:1fr; background:var(--surface); border-left:2px solid var(--cyan); padding:2rem; }
+    .issue-num-block { display:flex; flex-direction:column; align-items:flex-start; padding-top:2px; }
+    .issue-num { font-family:var(--display); font-weight:900; font-size:2.5rem; line-height:1; color:var(--cyan); opacity:0.2; }
+    .issue-label { font-family:var(--mono); font-size:0.42rem; color:var(--cyan); letter-spacing:0.1em; text-transform:uppercase; margin-top:2px; }
+    .issue-meta { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.65rem; flex-wrap:wrap; }
+    .issue-date { font-family:var(--mono); font-size:0.5rem; color:var(--slate); letter-spacing:0.08em; }
+    .issue-tag { font-family:var(--mono); font-size:0.46rem; color:var(--cyan); border:1px solid var(--cyan-border); background:var(--cyan-dim); padding:2px 7px; letter-spacing:0.08em; text-transform:uppercase; }
+    .issue-title { font-family:var(--display); font-weight:700; font-size:1.1rem; text-transform:uppercase; letter-spacing:0.03em; color:var(--white); margin-bottom:0.5rem; line-height:1.15; }
+    .issue-card.featured .issue-title { font-size:1.5rem; }
+    .issue-excerpt { font-size:0.8rem; color:var(--muted); line-height:1.65; }
+    .issue-card.featured .issue-excerpt { max-width:60ch; margin-bottom:1.25rem; }
+    .issue-action { display:flex; flex-direction:column; align-items:flex-end; gap:0.5rem; padding-top:2px; }
+    .issue-read { font-family:var(--mono); font-size:0.48rem; color:var(--slate); letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap; }
+    .issue-arrow { font-family:var(--mono); font-size:0.7rem; color:var(--cyan); transition:transform 0.2s; }
+    .issue-card:hover .issue-arrow { transform:translateX(4px); }
+    .featured-top { display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+    .featured-badge { font-family:var(--mono); font-size:0.48rem; color:var(--cyan); border:1px solid var(--cyan-border); background:var(--cyan-dim); padding:3px 8px; letter-spacing:0.1em; text-transform:uppercase; }
+    .featured-issue-num { font-family:var(--mono); font-size:0.48rem; color:var(--slate); letter-spacing:0.08em; }
+    .featured-meta { display:flex; align-items:center; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid rgba(176,212,222,0.07); flex-wrap:wrap; }
+    .featured-meta-item { font-family:var(--mono); font-size:0.5rem; color:var(--muted); letter-spacing:0.07em; text-transform:uppercase; }
+    .archive-label { font-family:var(--mono); font-size:0.52rem; color:var(--slate); letter-spacing:0.12em; text-transform:uppercase; padding:0.85rem 1.75rem; background:var(--surface); border-bottom:1px solid var(--cyan-border); border-top:1px solid var(--cyan-border); margin-top:1px; }
+    .log-sidebar { position:sticky; top:6rem; }
+    .sidebar-block { border:1px solid var(--cyan-border); padding:1.5rem; margin-bottom:1.5rem; }
+    .sidebar-title { font-family:var(--mono); font-size:0.52rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1.25rem; padding-bottom:0.75rem; border-bottom:1px solid rgba(176,212,222,0.08); }
+    .sidebar-stat { display:flex; justify-content:space-between; align-items:center; padding:0.6rem 0; border-bottom:1px solid rgba(176,212,222,0.05); }
+    .sidebar-stat:last-child { border-bottom:none; }
+    .sidebar-stat-label { font-family:var(--mono); font-size:0.52rem; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; }
+    .sidebar-stat-val { font-family:var(--display); font-weight:700; font-size:1.1rem; color:var(--cyan); }
+    .topic-row { display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px solid rgba(176,212,222,0.05); cursor:pointer; }
+    .topic-row:last-child { border-bottom:none; }
+    .topic-row:hover .topic-name { color:var(--cyan); }
+    .topic-name { font-family:var(--mono); font-size:0.52rem; color:var(--muted); letter-spacing:0.07em; text-transform:uppercase; transition:color 0.2s; }
+    .topic-count { font-family:var(--mono); font-size:0.48rem; color:var(--slate); letter-spacing:0.06em; }
+    .sidebar-subscribe p { font-size:0.78rem; color:var(--muted); line-height:1.65; margin-bottom:1rem; }
+    .load-more { text-align:center; padding:2rem 0; border-top:1px solid var(--cyan-border); }
+    .load-btn { font-family:var(--mono); font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); border:1px solid rgba(176,212,222,0.15); background:transparent; padding:0.75rem 1.75rem; cursor:pointer; transition:all 0.2s; }
+    .load-btn:hover { color:var(--cyan); border-color:var(--cyan-border); }
+    @media (max-width:900px) { .log-layout { grid-template-columns:1fr; } .log-sidebar { position:static; } }
+    @media (max-width:720px) { .issue-card { grid-template-columns:48px 1fr; } .issue-action { display:none; } .issue-card.featured { padding:1.5rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="z">
+  <a href="/" class="logo">Slate <em>&</em> Silicon</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/foundry/">The Foundry</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/store/">The Store</a></li>
+    <li><a href="/log/" class="active">The Log</a></li>
+  </ul>
+  <a href="/detox-planner/" class="nav-cta">→ Free Planner</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero z">
+  <p class="tag">Dispatch Archive // Weekly</p>
+  <h1>The<br>Log.</h1>
+  <p class="body-text">Every issue is a field report. Active experiments, data from the community, protocol updates, and one thing to try this week. No filler. No fluff. Transmitted every Tuesday.</p>
+</div>
+
+<div class="ticker z">
+  <div class="ticker-track">
+    <span class="ticker-item">Transmitted every Tuesday <b>//</b></span>
+    <span class="ticker-item">Field reports <b>//</b></span>
+    <span class="ticker-item">Experiment data <b>//</b></span>
+    <span class="ticker-item">Protocol updates <b>//</b></span>
+    <span class="ticker-item">One thing to try this week <b>//</b></span>
+    <span class="ticker-item">No filler <b>//</b></span>
+    <span class="ticker-item">No fluff <b>//</b></span>
+    <span class="ticker-item">Transmitted every Tuesday <b>//</b></span>
+    <span class="ticker-item">Field reports <b>//</b></span>
+    <span class="ticker-item">Experiment data <b>//</b></span>
+    <span class="ticker-item">Protocol updates <b>//</b></span>
+    <span class="ticker-item">One thing to try this week <b>//</b></span>
+    <span class="ticker-item">No filler <b>//</b></span>
+    <span class="ticker-item">No fluff <b>//</b></span>
+  </div>
+</div>
+
+<div class="z">
+  <div class="section">
+    <div class="log-layout">
+
+      <div>
+
+        <!-- LATEST -->
+        <div class="reveal">
+          <p class="tag">Latest Dispatch</p>
+          <div class="issue-list">
+            <a href="#" class="issue-card featured">
+              <div class="featured-top">
+                <span class="featured-badge">Latest Issue</span>
+                <span class="featured-issue-num">Issue #024 // May 2025</span>
+              </div>
+              <div class="issue-meta">
+                <span class="issue-tag">Experiment Data</span>
+                <span class="issue-tag">EXP-04</span>
+              </div>
+              <h2 class="issue-title">Grayscale 24: The Data Is In. The Results Are Uncomfortable.</h2>
+              <p class="issue-excerpt">847 participants ran the Grayscale 24 this month. We tracked phone check frequency before and after. The average reduction was 34% on Day 1 alone — but the interesting finding is what happened on Day 2 when participants switched back to color. This week we're breaking down the data, what it tells us about color psychology, and the one follow-on experiment we're running next.</p>
+              <div class="featured-meta">
+                <span class="featured-meta-item">8 min read</span>
+                <span class="featured-meta-item">847 participants</span>
+                <span class="featured-meta-item">34% avg reduction</span>
+                <span class="featured-meta-item" style="color:var(--cyan);">→ Read this issue</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- ARCHIVE -->
+        <div class="reveal" style="margin-top:3rem;">
+          <p class="tag">Archive // All Issues</p>
+          <div class="issue-list">
+
+            <div class="archive-label">// May 2025</div>
+
+            <a href="#" class="issue-card">
+              <div class="issue-num-block"><span class="issue-num">23</span><span class="issue-label">Issue</span></div>
+              <div class="issue-body">
+                <div class="issue-meta"><span class="issue-date">May 6, 2025</span><span class="issue-tag">Protocol</span></div>
+                <h3 class="issue-title">The 4PM Shutdown: Week 8 Data</h3>
+                <p class="issue-excerpt">512 participants. Eight weeks of shutdown data. The correlation between a hard 1600 cutoff and next-morning output quality is statistically significant.</p>
+              </div>
+              <div class="issue-action"><span class="issue-read">6 min</span><span class="issue-arrow">→</span></div>
+            </a>
+
+            <div class="archive-label">// April 2025</div>
+
+            <a href="#" class="issue-card">
+              <div class="issue-num-block"><span class="issue-num">22</span><span class="issue-label">Issue</span></div>
+              <div class="issue-body">
+                <div class="issue-meta"><span class="issue-date">Apr 29, 2025</span><span class="issue-tag">Deep Work</span></div>
+                <h3 class="issue-title">Why 90 Minutes Is the Magic Number</h3>
+                <p class="issue-excerpt">Ultradian rhythms, cognitive load cycles, and why your brain physically cannot sustain peak focus beyond 90 minutes. Plus: how to design your day around this constraint.</p>
+              </div>
+              <div class="issue-action"><span class="issue-read">7 min</span><span class="issue-arrow">→</span></div>
+            </a>
+
+            <a href="#" class="issue-card">
+              <div class="issue-num-block"><span class="issue-num">21</span><span class="issue-label">Issue</span></div>
+              <div class="issue-body">
+                <div class="issue-meta"><span class="issue-date">Apr 22, 2025</span><span class="issue-tag">Blueprint</span></div>
+                <h3 class="issue-title">Friction Architecture: The Full Framework</h3>
+                <p class="issue-excerpt">Stop relying on willpower. 3 layers, 9 moves, one operating principle: make distraction harder than focus.</p>
+              </div>
+              <div class="issue-action"><span class="issue-read">9 min</span><span class="issue-arrow">→</span></div>
+            </a>
+
+            <a href="#" class="issue-card">
+              <div class="issue-num-block"><span class="issue-num">20</span><span class="issue-label">Issue</span></div>
+              <div class="issue-body">
+                <div class="issue-meta"><span class="issue-date">Apr 15, 2025</span><span class="issue-tag">Tool Review</span></div>
+                <h3 class="issue-title">We Tested 6 Analog Timers. Here's the Ranking.</h3>
+                <p class="issue-excerpt">Physical timer vs. phone timer for deep work sessions. 30 participants, 4 weeks, 3 metrics. The winner isn't what you'd expect.</p>
+              </div>
+              <div class="issue-action"><span class="issue-read">6 min</span><span class="issue-arrow">→</span></div>
+            </a>
+
+            <div class="archive-label">// March 2025</div>
+
+            <a href="#" class="issue-card">
+              <div class="issue-num-block"><span class="issue-num">19</span><span class="issue-label">Issue</span></div>
+              <div class="issue-body">
+                <div class="issue-meta"><span class="issue-date">Mar 25, 2025</span><span class="issue-tag">Experiment</span></div>
+                <h3 class="issue-title">EXP-11 Launch: The Attention Heatmap</h3>
+                <p class="issue-excerpt">Introducing our newest community experiment. Map your personal attention leakage windows across a 24-hour cycle.</p>
+              </div>
+              <div class="issue-action"><span class="issue-read">5 min</span><span class="issue-arrow">→</span></div>
+            </a>
+
+            <a href="#" class="issue-card">
+              <div class="issue-num-block"><span class="issue-num">18</span><span class="issue-label">Issue</span></div>
+              <div class="issue-body">
+                <div class="issue-meta"><span class="issue-date">Mar 18, 2025</span><span class="issue-tag">Blueprint</span></div>
+                <h3 class="issue-title">The Morning Initialization Protocol</h3>
+                <p class="issue-excerpt">The first 23 minutes of your day determine the cognitive quality of everything that follows. The exact 3-step protocol — and why the sequence matters as much as the steps.</p>
+              </div>
+              <div class="issue-action"><span class="issue-read">7 min</span><span class="issue-arrow">→</span></div>
+            </a>
+
+            <a href="#" class="issue-card">
+              <div class="issue-num-block"><span class="issue-num">17</span><span class="issue-label">Issue</span></div>
+              <div class="issue-body">
+                <div class="issue-meta"><span class="issue-date">Mar 11, 2025</span><span class="issue-tag">Community</span></div>
+                <h3 class="issue-title">Reader Data: What Happens After Week 1</h3>
+                <p class="issue-excerpt">We asked 200 readers what happened after they completed the Detox Planner. The most common finding surprised us — and it's not about screen time at all.</p>
+              </div>
+              <div class="issue-action"><span class="issue-read">5 min</span><span class="issue-arrow">→</span></div>
+            </a>
+
+          </div>
+
+          <div class="load-more">
+            <button class="load-btn">→ Load Earlier Issues</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="log-sidebar reveal">
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Join The Log</p>
+          <div class="sidebar-subscribe">
+            <p>Every Tuesday. One experiment dispatch. Field data, protocol updates, and one thing to run this week.</p>
+          </div>
+          <div class="form" style="flex-direction:column; max-width:100%;">
+            <input type="email" placeholder="engineer@domain.com" style="border-right:1px solid var(--cyan-border); margin-bottom:4px;">
+            <button style="width:100%;">→ Subscribe Free</button>
+          </div>
+          <p class="form-note">No account. Unsubscribe any time.</p>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Log Stats</p>
+          <div class="sidebar-stat"><span class="sidebar-stat-label">Total Issues</span><span class="sidebar-stat-val">24</span></div>
+          <div class="sidebar-stat"><span class="sidebar-stat-label">Subscribers</span><span class="sidebar-stat-val">2.6k</span></div>
+          <div class="sidebar-stat"><span class="sidebar-stat-label">Open Rate</span><span class="sidebar-stat-val">61%</span></div>
+          <div class="sidebar-stat"><span class="sidebar-stat-label">Since</span><span class="sidebar-stat-val">2024</span></div>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Browse By Topic</p>
+          <div class="topic-row"><span class="topic-name">Experiments</span><span class="topic-count">8 issues</span></div>
+          <div class="topic-row"><span class="topic-name">Blueprints</span><span class="topic-count">6 issues</span></div>
+          <div class="topic-row"><span class="topic-name">Tool Reviews</span><span class="topic-count">4 issues</span></div>
+          <div class="topic-row"><span class="topic-name">Deep Work</span><span class="topic-count">3 issues</span></div>
+          <div class="topic-row"><span class="topic-name">Community Data</span><span class="topic-count">3 issues</span></div>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Transmission Status</p>
+          <div class="status"><div class="dot"></div> Next issue: Tuesday</div>
+          <div class="status" style="margin-top:0.65rem;"><div class="dot"></div> 24 issues transmitted</div>
+          <div class="status" style="margin-top:0.65rem;"><div class="dot"></div> 61% open rate</div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</div>
+
+<div class="section-alt z">
+  <div class="footer-cta">
+    <div class="reveal">
+      <p class="tag">Join 2,600+ Readers</p>
+      <h2>Every Tuesday.<br><span class="cyan">One dispatch.</span></h2>
+      <p class="body-text">Field data from active experiments. Protocol updates. One thing to run this week. No filler. No fluff. Transmitted every Tuesday — unsubscribe any time.</p>
+      <div class="form">
+        <input type="email" placeholder="engineer@domain.com">
+        <button>→ Subscribe Free</button>
+      </div>
+      <p class="form-note" style="text-align:center; margin-top:1rem;">No account. No algorithm. Unsubscribe any time.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="z">
+  <a href="/" class="footer-logo">Slate &amp; Silicon</a>
+  <ul class="footer-links">
+    <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a></li>
+    <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+    <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a></li>
+    <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+    <li><a href="/privacy/">Privacy</a></li>
+    <li><a href="/terms/">Terms</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Slate &amp; Silicon. All systems operational.</span>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
