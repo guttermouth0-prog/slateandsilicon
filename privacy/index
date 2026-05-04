@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Slate & Silicon</title>
+  <meta name="description" content="Slate & Silicon privacy policy. How we handle your data — plainly stated, no legal fog.">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@300;700;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .legal-layout { display:grid; grid-template-columns:1fr 260px; gap:5rem; align-items:start; }
+    .legal-body h2 { font-size:1.3rem; margin:2.5rem 0 0.75rem; }
+    .legal-body h2:first-of-type { margin-top:0; }
+    .legal-body p { font-size:0.9rem; color:var(--muted); line-height:1.85; margin-bottom:1rem; }
+    .legal-body p strong { color:var(--white); font-weight:400; }
+    .legal-body ul { list-style:none; margin:0 0 1rem; padding:0; }
+    .legal-body ul li { font-size:0.9rem; color:var(--muted); line-height:1.75; padding:0.35rem 0; border-bottom:1px solid rgba(176,212,222,0.05); display:flex; gap:0.65rem; }
+    .legal-body ul li:last-child { border-bottom:none; }
+    .legal-body ul li::before { content:'→'; color:var(--cyan); flex-shrink:0; }
+    .legal-sidebar { position:sticky; top:6rem; }
+    .sidebar-block { border:1px solid var(--cyan-border); padding:1.5rem; margin-bottom:1.5rem; }
+    .sidebar-title { font-family:var(--mono); font-size:0.52rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1.25rem; padding-bottom:0.75rem; border-bottom:1px solid rgba(176,212,222,0.08); }
+    .sidebar-nav-link { display:block; font-family:var(--mono); font-size:0.52rem; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; padding:0.6rem 0; border-bottom:1px solid rgba(176,212,222,0.05); transition:color 0.2s; }
+    .sidebar-nav-link:last-child { border-bottom:none; }
+    .sidebar-nav-link:hover { color:var(--cyan); }
+    .updated { font-family:var(--mono); font-size:0.52rem; color:var(--slate); letter-spacing:0.08em; margin-bottom:2.5rem; display:block; }
+    @media (max-width:900px) { .legal-layout { grid-template-columns:1fr; } .legal-sidebar { position:static; } }
+  </style>
+</head>
+<body>
+
+<nav class="z">
+  <a href="/" class="logo">Slate <em>&</em> Silicon</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/foundry/">The Foundry</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/store/">The Store</a></li>
+    <li><a href="/log/">The Log</a></li>
+  </ul>
+  <a href="/detox-planner/" class="nav-cta">→ Free Planner</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero z">
+  <p class="tag">Legal // Privacy</p>
+  <h1>Privacy<br>Policy.</h1>
+  <p class="body-text">How we handle your data — plainly stated, no legal fog. We're a small operation and we'd rather just tell you what's going on.</p>
+</div>
+
+<div class="ticker z">
+  <div class="ticker-track">
+    <span class="ticker-item">No data selling <b>//</b></span>
+    <span class="ticker-item">No tracking pixels <b>//</b></span>
+    <span class="ticker-item">No third-party ad networks <b>//</b></span>
+    <span class="ticker-item">Your email. Your data. <b>//</b></span>
+    <span class="ticker-item">Plain language. No fog. <b>//</b></span>
+    <span class="ticker-item">No data selling <b>//</b></span>
+    <span class="ticker-item">No tracking pixels <b>//</b></span>
+    <span class="ticker-item">No third-party ad networks <b>//</b></span>
+    <span class="ticker-item">Your email. Your data. <b>//</b></span>
+    <span class="ticker-item">Plain language. No fog. <b>//</b></span>
+  </div>
+</div>
+
+<div class="z">
+  <div class="section">
+    <div class="legal-layout">
+
+      <div class="legal-body reveal">
+        <span class="updated">Last updated: May 2025</span>
+
+        <h2>The short version</h2>
+        <p>We collect your email address when you subscribe to The Log or download the Detox Planner. We use it to send you what you asked for. We do not sell it, share it with advertisers, or use it in ways you wouldn't expect. That's the whole policy in two sentences — the rest below is the detail.</p>
+
+        <h2>What we collect</h2>
+        <ul>
+          <li>Your email address when you subscribe or download a product</li>
+          <li>Basic analytics data — pages visited, time on page, general location (country/region, not city or address) — collected through privacy-respecting analytics only</li>
+          <li>Purchase information (name, email, payment details) processed securely through our payment provider — we never store card numbers</li>
+        </ul>
+
+        <h2>What we do with it</h2>
+        <ul>
+          <li>Send you The Log if you subscribed</li>
+          <li>Deliver your download if you purchased or requested one</li>
+          <li>Occasionally send product updates or new experiment announcements — you can opt out of these at any time</li>
+          <li>Understand broadly how people use the site so we can improve it</li>
+        </ul>
+
+        <h2>What we never do</h2>
+        <ul>
+          <li>Sell your data to anyone, ever</li>
+          <li>Share your email with third-party advertisers</li>
+          <li>Use tracking pixels or behavioral ad targeting</li>
+          <li>Store your payment card details</li>
+          <li>Send you emails you didn't ask for without a clear opt-out</li>
+        </ul>
+
+        <h2>Third-party services</h2>
+        <p>We use a small number of trusted third-party tools to run the site. Each has its own privacy policy. Current tools include our email service provider (for sending The Log), our payment processor (for store purchases), and basic site analytics. We choose tools with strong privacy practices and do not use Google Analytics or Meta Pixel.</p>
+
+        <h2>Cookies</h2>
+        <p>We use minimal cookies necessary to run the site — session cookies and, if you purchase something, a secure checkout cookie. We do not use advertising cookies or cross-site tracking cookies.</p>
+
+        <h2>Your rights</h2>
+        <p>You can unsubscribe from The Log at any time using the link in any email. You can request deletion of your data at any time by emailing us at the address on the Contact page. We'll remove your information within 30 days.</p>
+
+        <h2>Contact</h2>
+        <p>Questions about this policy? <strong><a href="/contact/" style="color:var(--cyan); text-decoration:none;">Get in touch.</a></strong> We're a small team and we actually read and respond to these.</p>
+      </div>
+
+      <aside class="legal-sidebar reveal">
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Legal Pages</p>
+          <a href="/privacy/" class="sidebar-nav-link" style="color:var(--cyan);">Privacy Policy</a>
+          <a href="/terms/" class="sidebar-nav-link">Terms of Use</a>
+          <a href="/contact/" class="sidebar-nav-link">Contact</a>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Quick Summary</p>
+          <p style="font-size:0.75rem; color:var(--muted); line-height:1.7;">We collect your email. We use it to send you what you asked for. We don't sell it. You can delete it any time.</p>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Status</p>
+          <div class="status"><div class="dot"></div> Last updated May 2025</div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<footer class="z">
+  <a href="/" class="footer-logo">Slate &amp; Silicon</a>
+  <ul class="footer-links">
+    <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a></li>
+    <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+    <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a></li>
+    <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+    <li><a href="/privacy/">Privacy</a></li>
+    <li><a href="/terms/">Terms</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Slate &amp; Silicon. All systems operational.</span>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
