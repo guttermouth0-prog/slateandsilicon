@@ -3,504 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slate & Silicon — Forge Your Attention. Reclaim Your Reality.</title>
-  <meta name="description" content="You didn't lose your focus. It was engineered out of you. Slate & Silicon is a system for rebuilding attention in the age of engineered distraction.">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@300;700;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+  <title>Slate & Silicon — Cognitive recovery for people who lived online.</title>
+  <meta name="description" content="Slate & Silicon is cognitive recovery for people who lived online long enough to feel it. A quiet place for attention, stillness, and post-internet recovery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-  <style>
-
-    /* ── HERO (homepage only) ── */
-    .hero {
-      min-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6rem 2.5rem 4rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: clamp(3.2rem, 9vw, 7rem);
-      line-height: 0.93;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      max-width: 13ch;
-      margin-bottom: 1.75rem;
-      animation: up 0.7s ease both 0.2s;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 50ch;
-      line-height: 1.75;
-      margin-bottom: 2.5rem;
-      animation: up 0.7s ease both 0.4s;
-    }
-
-    .hero-btns {
-      display: flex;
-      align-items: center;
-      gap: 1.75rem;
-      flex-wrap: wrap;
-      animation: up 0.7s ease both 0.55s;
-    }
-
-    @keyframes up {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── METER BLOCK ── */
-    .meter-block {
-      background: var(--surface2);
-      border: 1px solid var(--cyan-border);
-      padding: 1.75rem;
-    }
-
-    .meter-heading {
-      font-family: var(--mono);
-      font-size: 0.56rem;
-      color: var(--cyan);
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-
-    .meter-row { margin-bottom: 1.1rem; }
-
-    .meter-labels {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.35rem;
-    }
-    .meter-labels span {
-      font-family: var(--mono);
-      font-size: 0.56rem;
-      letter-spacing: 0.05em;
-    }
-    .meter-labels span:first-child { color: var(--muted); }
-    .meter-labels span:last-child  { color: var(--cyan); }
-
-    .track { height: 2px; background: rgba(176,212,222,0.1); }
-    .fill {
-      height: 100%;
-      background: var(--cyan);
-      transform-origin: left;
-      animation: grow 1.4s ease both;
-    }
-    @keyframes grow {
-      from { transform: scaleX(0); }
-      to   { transform: scaleX(1); }
-    }
-
-    .meter-note {
-      font-family: var(--mono);
-      font-size: 0.5rem;
-      color: var(--slate);
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      margin-top: 1.25rem;
-      line-height: 1.6;
-    }
-
-    /* ── FRAMEWORK GRID ── */
-    .fw-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--cyan-border);
-      border: 1px solid var(--cyan-border);
-      margin-top: 2.5rem;
-    }
-
-    .fw-card { background: var(--bunker); padding: 2.25rem; }
-
-    .fw-pct {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: 4.5rem;
-      line-height: 1;
-      color: var(--cyan);
-      opacity: 0.13;
-      margin-bottom: 0.4rem;
-    }
-
-    .fw-title {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.65rem;
-    }
-
-    .fw-desc {
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* ── PLANNER MOCKUP ── */
-    .planner {
-      background: var(--surface2);
-      border: 1px solid var(--cyan-border);
-      padding: 1.75rem;
-      font-family: var(--mono);
-    }
-
-    .planner-top {
-      font-size: 0.55rem;
-      color: var(--cyan);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(176,212,222,0.1);
-      padding-bottom: 0.85rem;
-      margin-bottom: 1.25rem;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .planner-sector {
-      margin-bottom: 1.1rem;
-      padding: 0.85rem;
-      background: rgba(176,212,222,0.03);
-      border-left: 2px solid rgba(176,212,222,0.25);
-    }
-
-    .planner-label {
-      font-size: 0.5rem;
-      color: var(--cyan);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .planner-lines { display: flex; flex-direction: column; gap: 0.35rem; }
-    .pline { height: 1px; background: rgba(176,212,222,0.1); }
-    .pline:last-child { width: 55%; }
-
-    .planner-footer {
-      font-size: 0.47rem;
-      color: rgba(176,212,222,0.25);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-top: 1.25rem;
-    }
-
-    /* ── EXPERIMENT CARDS ── */
-    .exp-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--cyan-border);
-      border: 1px solid var(--cyan-border);
-      margin-top: 2.5rem;
-    }
-
-    .exp-card {
-      background: var(--bunker);
-      padding: 1.75rem;
-      transition: background 0.2s;
-      text-decoration: none;
-      display: block;
-    }
-    .exp-card:hover { background: var(--surface); }
-
-    .exp-code {
-      font-family: var(--mono);
-      font-size: 0.52rem;
-      color: var(--cyan);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.85rem;
-    }
-
-    .exp-title {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-bottom: 0.6rem;
-      color: var(--white);
-    }
-
-    .exp-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 1.1rem;
-    }
-
-    /* ── RESPONSIVE (homepage additions) ── */
-    @media (max-width: 720px) {
-      .hero { padding: 4rem 1.25rem 3rem; }
-      .fw-grid { grid-template-columns: 1fr; }
-      .exp-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
-<body>
+<body class="home">
 
-<!-- ══ NAV ══ -->
-<nav class="z">
-  <a href="/" class="logo">Slate <em>&</em> Silicon</a>
-  <ul class="nav-links">
-    <li><a href="/" class="active">Home</a></li>
-    <li><a href="/foundry/">The Lab</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/store/">The Store</a></li>
-    <li><a href="/log/">The Log</a></li>
-  </ul>
-  <a href="/detox-planner/" class="nav-cta">→ Free Planner</a>
-  <button class="nav-toggle" aria-label="Toggle navigation"
-    onclick="document.querySelector('.nav-links').classList.toggle('open')">
+<nav class="site-nav" aria-label="Primary navigation">
+  <a href="/" class="logo">Slate <span>&amp;</span> Silicon</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
+  <ul class="nav-links">
+    <li><a href="/log/">Read</a></li>
+    <li><a href="/foundry/">Watch</a></li>
+    <li><a href="/detox-planner/">Try</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
 </nav>
 
-<!-- ══ HERO ══ -->
-<section class="hero z">
-  <p class="tag">EXP-00 // Attention Systems // Initialized</p>
-  <h1>Your focus didn't disappear. It was <span class="cyan">engineered out</span> of you.</h1>
-  <p>You've been online since the dial-up days. You built careers, shipped products, and powered through. Now the cost is showing — in shallow work, fractured mornings, and a brain that can't hold a thought for 90 seconds. This isn't a motivation problem. It's a systems problem. And systems can be rebuilt.</p>
-  <div class="hero-btns">
-    <a href="/detox-planner/" class="btn btn-fill">→ Download The Detox Planner</a>
-    <a href="#framework" class="btn btn-line">See the framework</a>
-  </div>
-</section>
+<main>
+  <section class="hero quiet-section" aria-labelledby="hero-title">
+    <div class="copy-stack reveal">
+      <p class="eyebrow">Slate &amp; Silicon</p>
+      <h1 id="hero-title">The internet changed how your mind feels.</h1>
+      <p class="subtle">You probably didn’t notice when it started.</p>
+      <a href="#recognition" class="quiet-link">Stay for a minute</a>
+    </div>
+  </section>
 
-<!-- ══ TICKER ══ -->
-<div class="ticker z">
-  <div class="ticker-track">
-    <span class="ticker-item">Forge your attention <b>//</b></span>
-    <span class="ticker-item">Reclaim your reality <b>//</b></span>
-    <span class="ticker-item">Focus isn't a feeling — it's a system <b>//</b></span>
-    <span class="ticker-item">Willpower is finite — design around it <b>//</b></span>
-    <span class="ticker-item">Build the focus <b>//</b></span>
-    <span class="ticker-item">See the world <b>//</b></span>
-    <span class="ticker-item">The machinery of focus. The beauty of presence <b>//</b></span>
-    <span class="ticker-item">Forge your attention <b>//</b></span>
-    <span class="ticker-item">Reclaim your reality <b>//</b></span>
-    <span class="ticker-item">Focus isn't a feeling — it's a system <b>//</b></span>
-    <span class="ticker-item">Willpower is finite — design around it <b>//</b></span>
-    <span class="ticker-item">Build the focus <b>//</b></span>
-    <span class="ticker-item">See the world <b>//</b></span>
-    <span class="ticker-item">The machinery of focus. The beauty of presence <b>//</b></span>
-  </div>
-</div>
+  <section id="recognition" class="recognition quiet-section" aria-label="Recognition sequence">
+    <div class="recognition-stack">
+      <p class="recognition-line reveal">At some point, I stopped being alone with my thoughts.</p>
+      <p class="recognition-line reveal">There was always something in between.</p>
+      <p class="recognition-line reveal">A screen.<br>A notification.<br>A small interruption I didn’t question.</p>
+      <p class="recognition-line reveal">I started reaching for my phone before I even knew why.</p>
+      <p class="recognition-line reveal">Not to do anything specific.</p>
+      <p class="recognition-line reveal">Just to feel… occupied.</p>
+      <p class="recognition-line reveal">Silence felt off.</p>
+      <p class="recognition-line reveal">Like something was missing.</p>
+      <p class="recognition-line reveal">Or like I was supposed to be doing something else.</p>
+      <p class="recognition-line reveal">I couldn’t sit through things the same way anymore.</p>
+      <p class="recognition-line reveal">Movies.<br>Conversations.<br>Even my own thoughts.</p>
+      <p class="recognition-line reveal">My attention didn’t disappear.</p>
+      <p class="recognition-line reveal emphasis">It broke into pieces.</p>
+      <p class="recognition-line reveal">I thought I was just tired.</p>
+      <p class="recognition-line reveal">Or distracted.</p>
+      <p class="recognition-line reveal">Or getting worse at focusing.</p>
+      <p class="recognition-line reveal">I wasn’t.</p>
+      <p class="recognition-line reveal emphasis">I was adapting.</p>
+    </div>
+  </section>
 
-<!-- ══ DIAGNOSTIC ══ -->
-<div class="section-alt z">
-  <div class="section">
-    <div class="two-col">
-      <div class="reveal">
-        <p class="tag">Diagnostic // The Heat</p>
-        <h2>The system<br>is running hot.</h2>
-        <p class="body-text">Constant notifications. Tab switching. The phantom phone check. These aren't bad habits — they're the predictable output of an environment engineered by billion-dollar teams to extract your attention around the clock.</p>
-        <p class="body-text" style="margin-top:0.9rem;">You didn't fail. The design did. The question isn't willpower. It's friction architecture.</p>
-        <ul class="heat-list">
-          <li data-code="FAIL-01">Fractured morning routines before 8am contact</li>
-          <li data-code="FAIL-02">Context-switch cost: 23 minutes per interruption</li>
-          <li data-code="FAIL-03">Average phone check rate: 96× per day</li>
-          <li data-code="FAIL-04">Deep Work capacity lost since 2010: measurable</li>
-        </ul>
+  <section class="shift quiet-section">
+    <div class="copy-stack narrow reveal">
+      <p>I thought it was a discipline problem.</p>
+      <p>It wasn’t.</p>
+      <p>It was the environment.</p>
+    </div>
+  </section>
+
+  <section class="contrast quiet-section" aria-label="Digital overload and analog return">
+    <div class="contrast-grid reveal">
+      <div class="contrast-panel digital" aria-hidden="true">
+        <div class="screen-glow"></div>
+        <div class="notification one"></div>
+        <div class="notification two"></div>
+        <div class="notification three"></div>
       </div>
-      <div class="reveal">
-        <div class="meter-block">
-          <p class="meter-heading">// Attention Audit — Avg. Leakage Report</p>
-          <div class="meter-row">
-            <div class="meter-labels"><span>6:00 AM — Morning scroll</span><span>73%</span></div>
-            <div class="track"><div class="fill" style="width:73%"></div></div>
-          </div>
-          <div class="meter-row">
-            <div class="meter-labels"><span>11:00 AM — Notification pull</span><span>88%</span></div>
-            <div class="track"><div class="fill" style="width:88%"></div></div>
-          </div>
-          <div class="meter-row">
-            <div class="meter-labels"><span>2:00 PM — Afternoon drift</span><span>61%</span></div>
-            <div class="track"><div class="fill" style="width:61%"></div></div>
-          </div>
-          <div class="meter-row">
-            <div class="meter-labels"><span>8:00 PM — Doom-scroll window</span><span>94%</span></div>
-            <div class="track"><div class="fill" style="width:94%"></div></div>
-          </div>
-          <p class="meter-note">Standard maintenance for your cognitive engine.<br>Identify the leak. Plug the gap.</p>
-        </div>
+      <div class="contrast-copy">
+        <p>One keeps you occupied.</p>
+        <p>The other lets you return.</p>
+      </div>
+      <div class="contrast-panel analog" aria-hidden="true">
+        <div class="lamp-glow"></div>
+        <div class="desk-line"></div>
+        <div class="journal"></div>
+        <div class="pencil"></div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- ══ FRAMEWORK ══ -->
-<div class="z" id="framework">
-  <div class="section">
-    <div class="reveal">
-      <p class="tag">System Specs // The Lab</p>
-      <h2>Two components.<br>One system.</h2>
-      <p class="body-text">Willpower is a finite resource. Design a system that doesn't require it. The Slate & Silicon framework runs on two interdependent components — the Lab and the Expanse.</p>
-    </div>
-    <div class="fw-grid reveal">
-      <div class="fw-card">
-        <div class="fw-pct">70%</div>
-        <div class="fw-title">The Lab</div>
-        <p class="fw-desc">Engineering unbreakable attention. Focus Drills. Habit stacking. Deep Work architecture. The mechanical, daily work of rebuilding what 10+ years of digital distraction took from you. No inspiration required. Just the system.</p>
-        <div class="chip-row">
-          <span class="chip">Focus Drills</span>
-          <span class="chip">Habit Stacking</span>
-          <span class="chip">Deep Work</span>
-          <span class="chip">Digital Friction</span>
-          <span class="chip">Attention Audit</span>
-        </div>
+  <section class="definition quiet-section">
+    <div class="definition-grid reveal">
+      <div>
+        <p>Not productivity</p>
+        <p>Not optimization</p>
+        <p>Not discipline</p>
       </div>
-      <div class="fw-card" style="border-left:1px solid var(--cyan-border)">
-        <div class="fw-pct">30%</div>
-        <div class="fw-title">The Expanse</div>
-        <p class="fw-desc">The reward for the work. High-fidelity presence. What the world looks like when you're actually in it — not performing being in it for an algorithm. The recovery phase that makes the Lab sustainable.</p>
-        <div class="chip-row">
-          <span class="chip">Analog Recovery</span>
-          <span class="chip">Lucid Living</span>
-          <span class="chip">Presence Protocol</span>
-          <span class="chip">The Expanse</span>
-        </div>
+      <div>
+        <h2>Just recovery.</h2>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- ══ LEAD MAGNET ══ -->
-<div class="section-alt z" id="planner">
-  <div class="section">
-    <div class="two-col">
-      <div class="planner reveal">
-        <div class="planner-top">
-          <span>The Detox Planner // EXP-01</span>
-          <span>Day 01 / 07</span>
-        </div>
-        <div class="planner-sector">
-          <p class="planner-label">Sector 01 // Initialization</p>
-          <div class="planner-lines">
-            <div class="pline"></div>
-            <div class="pline"></div>
-            <div class="pline"></div>
-          </div>
-        </div>
-        <div class="planner-sector">
-          <p class="planner-label">Sector 02 // The One Move</p>
-          <div class="planner-lines">
-            <div class="pline"></div>
-            <div class="pline"></div>
-          </div>
-        </div>
-        <div class="planner-sector">
-          <p class="planner-label">Sector 03 // Decommission</p>
-          <div class="planner-lines">
-            <div class="pline"></div>
-            <div class="pline"></div>
-            <div class="pline"></div>
-          </div>
-        </div>
-        <p class="planner-footer">S&S-Ledger-001 // Analog Protocol // No App Required</p>
-      </div>
-      <div class="reveal">
-        <p class="tag">Download // Experiment Log: EXP-01</p>
-        <h2>The Detox<br>Planner.</h2>
-        <p class="body-text">A structured, 7-day analog protocol. Three sectors per day. Track your attention like a systems engineer tracks a build — with precision, not feeling. No app required. No subscription. Works offline by design.</p>
-        <ul class="include-list">
-          <li>7-day structured detox framework</li>
-          <li>3-sector daily page: Initialization, One Move, Decommission</li>
-          <li>Focus Heatmap: identify your personal leakage windows</li>
-          <li>The Grayscale 24 challenge instructions</li>
-          <li>4:00 PM Tech-Shutdown Protocol template</li>
-          <li>Weekly log prompts for The Oprtators</li>
-        </ul>
-        <div class="form">
-          <input type="email" placeholder="engineer@domain.com">
-          <button>→ Run The Protocol</button>
-        </div>
-        <p class="form-note">No account. No algorithm. A PDF that works offline.</p>
-      </div>
+  <section class="reassurance quiet-section">
+    <div class="copy-stack narrow reveal">
+      <p class="large">Nothing is wrong with you.</p>
+      <p>You learned how to function in a system that rewards interruption.</p>
+      <p>It just never taught you how to come back.</p>
+      <p class="transition-line">That’s what this is for.</p>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- ══ EXPERIMENTS ══ -->
-<div class="z">
-  <div class="section">
-    <div class="reveal">
-      <p class="tag">Lab Log // Active Experiments</p>
-      <h2>Field tests.<br>Real data.</h2>
-      <p class="body-text">Every post is a performance experiment. Run the test. Report your findings. This isn't inspiration content — it's systems documentation.</p>
+  <section class="entry quiet-section" aria-labelledby="entry-title">
+    <div class="section-header reveal">
+      <p class="eyebrow">Start quietly</p>
+      <h2 id="entry-title">Choose the door that feels easiest.</h2>
     </div>
-    <div class="exp-grid reveal">
-      <a href="/foundry/" class="exp-card">
-        <p class="exp-code">EXP-04 // Stress Test</p>
-        <h3 class="exp-title">The Grayscale 24</h3>
-        <p class="exp-desc">Turn your phone to black-and-white for 24 hours. Testing the neural pull of color icons. Run the test. Report your findings.</p>
-        <div class="status"><div class="dot"></div> Active — 47 participants</div>
+    <div class="entry-grid reveal">
+      <a href="/log/" class="entry-card">
+        <span>Read</span>
+        <p>Things you’ll recognize immediately.</p>
       </a>
-      <a href="/foundry/" class="exp-card">
-        <p class="exp-code">EXP-07 // Protocol</p>
-        <h3 class="exp-title">The 4:00 PM Shutdown</h3>
-        <p class="exp-desc">A structured, 3-step tech-shutdown protocol executed at 1600 daily. Measuring cognitive residue from screen time against morning output quality.</p>
-        <div class="status"><div class="dot"></div> Active — 51 participants</div>
+      <a href="/foundry/" class="entry-card">
+        <span>Watch</span>
+        <p>Slower explanations of what changed.</p>
       </a>
-      <a href="/foundry/" class="exp-card">
-        <p class="exp-code">EXP-11 // Audit</p>
-        <h3 class="exp-title">The Attention Heatmap</h3>
-        <p class="exp-desc">A 24-hour focus map charting where Attention Leakage occurs. Standard maintenance for your cognitive engine. Identify the leak, plug the gap.</p>
-        <div class="status"><div class="dot"></div> Active — 120 participants</div>
+      <a href="/detox-planner/" class="entry-card">
+        <span>Try</span>
+        <p>Small ways to feel your attention again.</p>
+      </a>
+      <a href="/about/" class="entry-card">
+        <span>About</span>
+        <p>How this started.</p>
       </a>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- ══ FOOTER CTA ══ -->
-<div class="section-alt z">
-  <div class="footer-cta">
-    <div class="reveal">
-      <p class="tag">Final Directive</p>
-      <h2>Stop scrolling.<br>Start <span class="cyan">seeing.</span></h2>
-      <p class="body-text">You've spent 10+ years building everyone else's digital empire. It's time to rebuild your own attention span. The first move takes 30 seconds.</p>
-      <div class="form">
-        <input type="email" placeholder="engineer@domain.com">
-        <button>→ Download Free</button>
-      </div>
-      <p class="form-note" style="text-align:center; margin-top:1rem;">No account. No algorithm. No noise.</p>
+  <section class="email quiet-section" aria-labelledby="email-title">
+    <div class="copy-stack narrow reveal">
+      <h2 id="email-title">Most people feel this.</h2>
+      <p>Almost no one talks about it.</p>
+      <form class="quiet-form" action="#" method="post">
+        <label class="sr-only" for="email-address">Email address</label>
+        <input id="email-address" type="email" name="email" placeholder="your@email.com" autocomplete="email">
+        <button type="submit">Send me something quiet</button>
+      </form>
+      <p class="form-note">Not often. No noise. No pressure.</p>
     </div>
-  </div>
-</div>
+  </section>
+</main>
 
-<!-- ══ FOOTER ══ -->
-<footer class="z">
+<footer class="site-footer">
   <a href="/" class="footer-logo">Slate &amp; Silicon</a>
+  <p>For people who lived online long enough to feel it.</p>
   <ul class="footer-links">
-    <li><a href="https://www.instagram.com/slate.silicon/" target="_blank" rel="noopener">Instagram</a></li>
-    <li><a href="https://www.facebook.com/slate.silicon/" target="_blank" rel="noopener">Facebook</a></li>
-    <li><a href="https://tiktok.com/@roman.prime78" target="_blank" rel="noopener">TikTok</a></li>
-    <li><a href="https://www.youtube.com/@slate.silicon" target="_blank" rel="noopener">YouTube</a></li>
-    <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-    <li><a href="https://www.pinterest.com/slateandsilicon/" target="_blank" rel="noopener">Pinterest</a></li>
     <li><a href="/privacy/">Privacy</a></li>
     <li><a href="/terms/">Terms</a></li>
     <li><a href="/contact/">Contact</a></li>
   </ul>
-  <span class="footer-copy">© 2025 Slate &amp; Silicon. All systems operational.</span>
 </footer>
 
-<!-- ══ JS ══ -->
 <script>
-  // Scroll reveal
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('on');
+        observer.unobserve(entry.target);
+      }
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  }, { threshold: 0.16 });
+
+  document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 </script>
 
 </body>
