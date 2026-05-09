@@ -6,294 +6,81 @@
   <title>The Detox Planner — Slate & Silicon</title>
   <meta name="description" content="A free 7-day analog protocol for rebuilding attention. Three sectors per day. No app required. Download The Detox Planner from Slate & Silicon.">
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@300;700;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <style>
+    .lp-hero { min-height:88vh; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; max-width:1100px; margin:0 auto; padding:5rem 2.5rem; }
+    .lp-hero h1 { font-family:var(--display); font-weight:900; font-size:clamp(3rem,7vw,6rem); line-height:0.93; text-transform:uppercase; letter-spacing:-0.01em; margin-bottom:1.5rem; animation:up 0.7s ease both 0.15s; }
+    .lp-hero .sub { font-size:0.95rem; color:var(--muted); max-width:46ch; line-height:1.8; margin-bottom:2rem; animation:up 0.7s ease both 0.3s; }
+    @keyframes up { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    .planner-wrap { animation:up 0.7s ease both 0.25s; }
+    .planner { background:var(--surface2); border:1px solid var(--cyan-border); padding:2rem; font-family:var(--mono); }
+    .planner-top { font-size:0.55rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; border-bottom:1px solid rgba(176,212,222,0.1); padding-bottom:0.85rem; margin-bottom:1.5rem; display:flex; justify-content:space-between; }
+    .planner-sector { margin-bottom:1.1rem; padding:1rem; background:rgba(176,212,222,0.03); border-left:2px solid rgba(176,212,222,0.25); }
+    .planner-label { font-size:0.5rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.65rem; }
+    .planner-lines { display:flex; flex-direction:column; gap:0.4rem; }
+    .pline { height:1px; background:rgba(176,212,222,0.1); }
+    .pline:last-child { width:55%; }
+    .planner-footer { font-size:0.47rem; color:rgba(176,212,222,0.25); letter-spacing:0.1em; text-transform:uppercase; margin-top:1.5rem; padding-top:1rem; border-top:1px solid rgba(176,212,222,0.06); }
+    .planner-nav { display:flex; gap:4px; margin-bottom:1.5rem; }
+    .planner-day { font-size:0.45rem; font-family:var(--mono); letter-spacing:0.08em; color:var(--slate); border:1px solid rgba(176,212,222,0.1); padding:3px 6px; text-transform:uppercase; }
+    .planner-day.active { color:var(--cyan); border-color:var(--cyan-border); background:var(--cyan-dim); }
+    .inside-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--cyan-border); border:1px solid var(--cyan-border); margin-top:2.5rem; }
+    .inside-card { background:var(--bunker); padding:1.75rem; }
+    .inside-num { font-family:var(--display); font-weight:900; font-size:3rem; line-height:1; color:var(--cyan); opacity:0.15; margin-bottom:0.35rem; }
+    .inside-title { font-family:var(--display); font-weight:700; font-size:1rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem; }
+    .inside-desc { font-size:0.8rem; color:var(--muted); line-height:1.65; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:3rem; margin-top:2.5rem; counter-reset:steps; }
+    .step { counter-increment:steps; }
+    .step-num { font-family:var(--mono); font-size:0.52rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.85rem; display:flex; align-items:center; gap:0.5rem; }
+    .step-num::before { content:'0' counter(steps); font-size:0.85rem; font-weight:700; }
+    .step-num::after { content:''; flex:1; height:1px; background:var(--cyan-border); }
+    .step h3 { font-family:var(--display); font-weight:700; font-size:1.1rem; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:0.5rem; }
+    .step p { font-size:0.82rem; color:var(--muted); line-height:1.65; }
+    .trust-bar { display:flex; gap:3rem; align-items:center; flex-wrap:wrap; padding:2rem 0; border-top:1px solid var(--cyan-border); border-bottom:1px solid var(--cyan-border); margin-top:2.5rem; }
+    .trust-stat { display:flex; flex-direction:column; gap:0.2rem; }
+    .trust-num { font-family:var(--display); font-weight:700; font-size:2rem; color:var(--cyan); line-height:1; }
+    .trust-label { font-family:var(--mono); font-size:0.52rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; }
+    .trust-divider { width:1px; height:40px; background:var(--cyan-border); }
+    .lp-cta { text-align:center; padding:7rem 2.5rem; max-width:700px; margin:0 auto; }
+    .lp-cta h2 { font-size:clamp(2.5rem,5vw,4.5rem); margin:1rem auto 1.25rem; }
+    .lp-cta .body-text { margin:0 auto 2.5rem; text-align:center; }
+    .lp-cta .tag { justify-content:center; }
+    .lp-cta .tag::before { display:none; }
 
-    /* ── HERO (landing page — no distractions) ── */
-    .lp-hero {
-      min-height: 88vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5rem 2.5rem;
+    /* Download block */
+    .download-block { margin-top:1.5rem; }
+    .kit-embed { margin-bottom:1rem; }
+    .fallback-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+      font-family:var(--mono);
+      font-size:0.65rem;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      color:var(--muted);
+      border-bottom:1px solid var(--slate);
+      text-decoration:none;
+      padding-bottom:2px;
+      transition:all 0.2s;
+      margin-top:0.75rem;
     }
+    .fallback-btn:hover { color:var(--cyan); border-color:var(--cyan); }
+    .fallback-note { font-family:var(--mono); font-size:0.5rem; color:var(--slate); letter-spacing:0.07em; margin-top:0.5rem; }
 
-    .lp-hero h1 {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: clamp(3rem, 7vw, 6rem);
-      line-height: 0.93;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
-      animation: up 0.7s ease both 0.15s;
-    }
-
-    .lp-hero .sub {
-      font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 46ch;
-      line-height: 1.8;
-      margin-bottom: 2rem;
-      animation: up 0.7s ease both 0.3s;
-    }
-
-    .lp-hero .form {
-      animation: up 0.7s ease both 0.45s;
-    }
-
-    @keyframes up {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── PLANNER MOCKUP (large) ── */
-    .planner-wrap {
-      animation: up 0.7s ease both 0.25s;
-    }
-
-    .planner {
-      background: var(--surface2);
-      border: 1px solid var(--cyan-border);
-      padding: 2rem;
-      font-family: var(--mono);
-    }
-
-    .planner-top {
-      font-size: 0.55rem;
-      color: var(--cyan);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(176,212,222,0.1);
-      padding-bottom: 0.85rem;
-      margin-bottom: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .planner-sector {
-      margin-bottom: 1.1rem;
-      padding: 1rem;
-      background: rgba(176,212,222,0.03);
-      border-left: 2px solid rgba(176,212,222,0.25);
-    }
-
-    .planner-label {
-      font-size: 0.5rem;
-      color: var(--cyan);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.65rem;
-    }
-
-    .planner-lines { display: flex; flex-direction: column; gap: 0.4rem; }
-    .pline { height: 1px; background: rgba(176,212,222,0.1); }
-    .pline:last-child { width: 55%; }
-
-    .planner-footer {
-      font-size: 0.47rem;
-      color: rgba(176,212,222,0.25);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(176,212,222,0.06);
-    }
-
-    .planner-nav {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 1.5rem;
-    }
-
-    .planner-day {
-      font-size: 0.45rem;
-      font-family: var(--mono);
-      letter-spacing: 0.08em;
-      color: var(--slate);
-      border: 1px solid rgba(176,212,222,0.1);
-      padding: 3px 6px;
-      text-transform: uppercase;
-    }
-    .planner-day.active {
-      color: var(--cyan);
-      border-color: var(--cyan-border);
-      background: var(--cyan-dim);
-    }
-
-    /* ── WHAT'S INSIDE ── */
-    .inside-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--cyan-border);
-      border: 1px solid var(--cyan-border);
-      margin-top: 2.5rem;
-    }
-
-    .inside-card {
-      background: var(--bunker);
-      padding: 1.75rem;
-    }
-
-    .inside-num {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: 3rem;
-      line-height: 1;
-      color: var(--cyan);
-      opacity: 0.15;
-      margin-bottom: 0.35rem;
-    }
-
-    .inside-title {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
-
-    .inside-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* ── HOW IT WORKS ── */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      margin-top: 2.5rem;
-      counter-reset: steps;
-    }
-
-    .step { counter-increment: steps; }
-
-    .step-num {
-      font-family: var(--mono);
-      font-size: 0.52rem;
-      color: var(--cyan);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .step-num::before {
-      content: '0' counter(steps);
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-    .step-num::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--cyan-border);
-    }
-
-    .step h3 {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-bottom: 0.5rem;
-    }
-
-    .step p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* ── TRUST BAR ── */
-    .trust-bar {
-      display: flex;
-      gap: 3rem;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 2rem 0;
-      border-top: 1px solid var(--cyan-border);
-      border-bottom: 1px solid var(--cyan-border);
-      margin-top: 2.5rem;
-    }
-
-    .trust-stat {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .trust-num {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 2rem;
-      color: var(--cyan);
-      line-height: 1;
-    }
-
-    .trust-label {
-      font-family: var(--mono);
-      font-size: 0.52rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .trust-divider {
-      width: 1px;
-      height: 40px;
-      background: var(--cyan-border);
-    }
-
-    /* ── FINAL CTA (landing page version — no nav out) ── */
-    .lp-cta {
-      text-align: center;
-      padding: 7rem 2.5rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .lp-cta h2 {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      margin: 1rem auto 1.25rem;
-    }
-
-    .lp-cta .body-text {
-      margin: 0 auto 2.5rem;
-      text-align: center;
-    }
-
-    .lp-cta .form { margin: 0 auto; justify-content: center; }
-    .lp-cta .tag { justify-content: center; }
-    .lp-cta .tag::before { display: none; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 720px) {
-      .lp-hero {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 3.5rem 1.25rem;
-        min-height: unset;
-      }
-      .inside-grid { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; gap: 2rem; }
-      .trust-bar { gap: 1.5rem; }
-      .trust-divider { display: none; }
-      .lp-cta { padding: 5rem 1.25rem; }
+    @media (max-width:720px) {
+      .lp-hero { grid-template-columns:1fr; gap:3rem; padding:3.5rem 1.25rem; min-height:unset; }
+      .inside-grid { grid-template-columns:1fr; }
+      .steps { grid-template-columns:1fr; gap:2rem; }
+      .trust-bar { gap:1.5rem; }
+      .trust-divider { display:none; }
+      .lp-cta { padding:5rem 1.25rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ NAV (minimal — one exit only) ══ -->
+<!-- ══ NAV ══ -->
 <nav class="z">
   <a href="/" class="logo">Slate <em>&</em> Silicon</a>
   <ul class="nav-links">
@@ -303,7 +90,7 @@
     <li><a href="/store/">The Store</a></li>
     <li><a href="/log/">The Log</a></li>
   </ul>
-  <a href="/detox-planner/" class="nav-cta">→ Free Planner</a>
+  <a href="#download" class="nav-cta">→ Get It Free</a>
   <button class="nav-toggle" aria-label="Toggle navigation"
     onclick="document.querySelector('.nav-links').classList.toggle('open')">
     <span></span><span></span><span></span>
@@ -314,7 +101,6 @@
 <div class="z">
   <div class="lp-hero">
 
-    <!-- LEFT: Copy + form -->
     <div>
       <p class="tag">EXP-01 // Download // Free</p>
       <h1>The Detox<br><span class="cyan">Planner.</span></h1>
@@ -327,11 +113,19 @@
         <li>8:00 PM Tech-Shutdown Protocol template</li>
         <li>Weekly log prompts for The Laboratory community</li>
       </ul>
-      <script async data-uid="68998098aa" src="https://slate-silicon.kit.com/68998098aa/index.js"></script>
-        <p class="form-note" style="text-align:center; margin-top:0.5rem;">No account. No algorithm. No noise.</p>
+
+      <!-- ══ DOWNLOAD BLOCK ══ -->
+      <div class="download-block" id="download">
+        <div class="kit-embed">
+          <script async data-uid="68998098aa" src="https://slate-silicon.kit.com/68998098aa/index.js"></script>
+        </div>
+        <a href="https://slate-silicon.kit.com/68998098aa" target="_blank" rel="noopener" class="fallback-btn">
+          → Or open the download page directly
+        </a>
+        <p class="fallback-note">Form not loading? Click above — same signup, different window.</p>
+      </div>
     </div>
 
-    <!-- RIGHT: Planner mockup -->
     <div class="planner-wrap">
       <div class="planner">
         <div class="planner-top">
@@ -350,24 +144,19 @@
         <div class="planner-sector">
           <p class="planner-label">Sector 01 // Initialization</p>
           <div class="planner-lines">
-            <div class="pline"></div>
-            <div class="pline"></div>
-            <div class="pline"></div>
+            <div class="pline"></div><div class="pline"></div><div class="pline"></div>
           </div>
         </div>
         <div class="planner-sector">
           <p class="planner-label">Sector 02 // The One Move</p>
           <div class="planner-lines">
-            <div class="pline"></div>
-            <div class="pline"></div>
+            <div class="pline"></div><div class="pline"></div>
           </div>
         </div>
         <div class="planner-sector">
           <p class="planner-label">Sector 03 // Decommission</p>
           <div class="planner-lines">
-            <div class="pline"></div>
-            <div class="pline"></div>
-            <div class="pline"></div>
+            <div class="pline"></div><div class="pline"></div><div class="pline"></div>
           </div>
         </div>
         <p class="planner-footer">Analog Protocol // No App Required // Print &amp; Run</p>
@@ -403,30 +192,13 @@
 <div class="section-alt z">
   <div class="section" style="padding-top:3rem; padding-bottom:3rem;">
     <div class="trust-bar reveal">
-      <div class="trust-stat">
-        <span class="trust-num">2,563</span>
-        <span class="trust-label">Downloads this month</span>
-      </div>
+      <div class="trust-stat"><span class="trust-num">7</span><span class="trust-label">Days. No more.</span></div>
       <div class="trust-divider"></div>
-      <div class="trust-stat">
-        <span class="trust-num">7</span>
-        <span class="trust-label">Days. No more.</span>
-      </div>
+      <div class="trust-stat"><span class="trust-num">3</span><span class="trust-label">Sectors per day</span></div>
       <div class="trust-divider"></div>
-      <div class="trust-stat">
-        <span class="trust-num">3</span>
-        <span class="trust-label">Sectors per day</span>
-      </div>
+      <div class="trust-stat"><span class="trust-num">0</span><span class="trust-label">Apps required</span></div>
       <div class="trust-divider"></div>
-      <div class="trust-stat">
-        <span class="trust-num">0</span>
-        <span class="trust-label">Apps required</span>
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-stat">
-        <span class="trust-num">$0</span>
-        <span class="trust-label">Cost to you</span>
-      </div>
+      <div class="trust-stat"><span class="trust-num">$0</span><span class="trust-label">Cost to you</span></div>
     </div>
   </div>
 </div>
@@ -509,8 +281,12 @@
       <p class="tag">Final Directive</p>
       <h2>Run the<br><span class="cyan">protocol.</span></h2>
       <p class="body-text">Seven days. Three sectors. No app. No subscription. No noise. The first move takes 30 seconds.</p>
-      <script async data-uid="68998098aa" src="https://slate-silicon.kit.com/68998098aa/index.js"></script>
-        <p class="form-note" style="text-align:center; margin-top:0.5rem;">No account. No algorithm. No noise.</p>
+      <div class="kit-embed">
+        <script async data-uid="68998098aa" src="https://slate-silicon.kit.com/68998098aa/index.js"></script>
+      </div>
+      <a href="https://slate-silicon.kit.com/68998098aa" target="_blank" rel="noopener" class="fallback-btn">
+        → Or open the download page directly
+      </a>
     </div>
   </div>
 </div>
@@ -518,7 +294,7 @@
 <!-- ══ FOOTER ══ -->
 <footer class="z">
   <a href="/" class="footer-logo">Slate &amp; Silicon</a>
-      <ul class="footer-links">
+  <ul class="footer-links">
     <li><a href="https://www.instagram.com/slate.silicon/" target="_blank" rel="noopener">Instagram</a></li>
     <li><a href="https://www.facebook.com/slate.silicon/" target="_blank" rel="noopener">Facebook</a></li>
     <li><a href="https://tiktok.com/@roman.prime78" target="_blank" rel="noopener">TikTok</a></li>
@@ -532,12 +308,9 @@
   <span class="footer-copy">© 2025 Slate &amp; Silicon. All systems operational.</span>
 </footer>
 
-<!-- ══ JS ══ -->
 <script>
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
