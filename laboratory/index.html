@@ -3,17 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0d">
   <title>Laboratory — Slate & Silicon</title>
-  <meta name="description" content="The Slate & Silicon Laboratory is a controlled archive of attention experiments, field notes, and digital detox protocols.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta name="description" content="A collection of small experiments for reducing digital noise and rebuilding attention.">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XZ84PSHRX9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-XZ84PSHRX9');
+  </script>
+
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/system.css">
 </head>
 <body>
 
-<nav class="site-nav" aria-label="Primary navigation">
+<nav class="site-nav">
   <a href="/" class="logo">Slate & Silicon</a>
   <ul class="nav-links">
     <li><a href="/start-here/">Start Here</a></li>
@@ -24,148 +31,66 @@
   <a class="nav-cta" href="/detox-planner/">Get the Reset</a>
 </nav>
 
-<main class="lab-archive">
-  <header class="lab-archive-hero reveal">
-    <div>
-      <p class="eyebrow">Laboratory</p>
-      <h1>Controlled Attention Experiments</h1>
-      <p class="body-text">A structured archive of protocols designed to rebuild focus in a high-noise environment. No inspiration. No noise. Only experiments worth running.</p>
+<main>
+
+<section>
+  <div class="reset-container">
+    <h1>Laboratory</h1>
+    <p class="body-text">
+      A collection of small experiments for reducing digital noise and rebuilding attention.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="reset-container">
+    <h2>Experiments</h2>
+
+    <div class="lab-list">
+      <a href="/lab/exp-01/" class="lab-item">
+        <span class="lab-id">EXP-01</span>
+        <h3>Signal Audit</h3>
+        <p>Track where your attention actually goes.</p>
+      </a>
+
+      <a href="/lab/exp-02/" class="lab-item">
+        <span class="lab-id">EXP-02</span>
+        <h3>Notification Fast</h3>
+        <p>Remove all non-essential inputs for 24 hours.</p>
+      </a>
+
+      <a href="/lab/exp-03/" class="lab-item">
+        <span class="lab-id">EXP-03</span>
+        <h3>Single Task Block</h3>
+        <p>Work without switching for a fixed window.</p>
+      </a>
+
+      <a href="/lab/exp-04/" class="lab-item">
+        <span class="lab-id">EXP-04</span>
+        <h3>Evening Shutdown</h3>
+        <p>Close your day deliberately instead of drifting.</p>
+      </a>
+
+      <a href="/lab/exp-05/" class="lab-item">
+        <span class="lab-id">EXP-05</span>
+        <h3>Analog Morning</h3>
+        <p>Delay digital input for the first hour.</p>
+      </a>
     </div>
-    <aside class="lab-status-panel" aria-label="Laboratory status">
-      <dl>
-        <div><dt>Status</dt><dd>Operational</dd></div>
-        <div><dt>Cadence</dt><dd>Weekly</dd></div>
-        <div><dt>Method</dt><dd>Observe / Adjust</dd></div>
-        <div><dt>Signal</dt><dd>Low Noise</dd></div>
-      </dl>
-    </aside>
-  </header>
+  </div>
+</section>
 
-  <section class="current-experiment reveal" aria-labelledby="current-experiment-title">
-    <div>
-      <p class="eyebrow">Current Experiment</p>
-    </div>
-    <div>
-      <h2 id="current-experiment-title">The Grayscale 24</h2>
-      <p class="body-text">Turn your phone grayscale for 24 hours. Observe the pull of color-coded apps, notification loops, and automatic checking behavior. The goal is not perfection. The goal is measurement.</p>
-      <div class="experiment-meta" aria-label="Experiment details">
-        <span>24 Hours</span>
-        <span>Phone Behavior</span>
-        <span>Low Friction</span>
-      </div>
-      <div class="cta-row">
-        <a href="#" class="cta">Run Experiment</a>
-        <a href="/detox-planner/" class="cta">Get the Reset</a>
-      </div>
-    </div>
-  </section>
+<section>
+  <div class="reset-container">
+    <h2>Start with the reset</h2>
+    <p class="body-text">
+      If you haven’t run the baseline yet, begin there.
+    </p>
+    <a href="/detox-planner/" class="cta">Get the Reset</a>
+  </div>
+</section>
 
-  <nav class="archive-filter reveal" aria-label="Filter laboratory entries">
-    <button class="active" data-filter="all">All</button>
-    <button data-filter="experiment">Experiments</button>
-    <button data-filter="protocol">Protocols</button>
-    <button data-filter="field-note">Field Notes</button>
-  </nav>
-
-  <section class="lab-log reveal" aria-label="Laboratory log entries">
-    <a href="#" class="lab-entry" data-type="experiment">
-      <span class="lab-entry-code">EXP-07</span>
-      <div>
-        <h3>The 8PM Shutdown Protocol</h3>
-        <p>A structured shutdown to reduce cognitive residue before sleep.</p>
-      </div>
-      <span class="lab-entry-link">Run →</span>
-    </a>
-
-    <a href="#" class="lab-entry" data-type="protocol">
-      <span class="lab-entry-code">PRT-03</span>
-      <div>
-        <h3>The Morning Initialization</h3>
-        <p>A 25-minute analog start sequence for protecting the first attention window of the day.</p>
-      </div>
-      <span class="lab-entry-link">Open →</span>
-    </a>
-
-    <a href="#" class="lab-entry" data-type="field-note">
-      <span class="lab-entry-code">FLD-02</span>
-      <div>
-        <h3>Why Silence Feels Broken Now</h3>
-        <p>A field note on withdrawal from ambient stimulation and the strange discomfort of an empty room.</p>
-      </div>
-      <span class="lab-entry-link">Read →</span>
-    </a>
-
-    <a href="#" class="lab-entry" data-type="experiment">
-      <span class="lab-entry-code">EXP-11</span>
-      <div>
-        <h3>The Attention Heatmap</h3>
-        <p>A 24-hour tracking exercise for identifying where attention leaks before trying to repair it.</p>
-      </div>
-      <span class="lab-entry-link">Run →</span>
-    </a>
-
-    <a href="#" class="lab-entry" data-type="protocol">
-      <span class="lab-entry-code">PRT-09</span>
-      <div>
-        <h3>The Single-Tab Protocol</h3>
-        <p>One browser tab. One task. One hour. A controlled constraint for rebuilding depth.</p>
-      </div>
-      <span class="lab-entry-link">Open →</span>
-    </a>
-
-    <a href="#" class="lab-entry" data-type="field-note">
-      <span class="lab-entry-code">FLD-06</span>
-      <div>
-        <h3>The Feed Made Waiting Feel Illegal</h3>
-        <p>A short observation on boredom, micro-pauses, and the loss of ordinary mental drift.</p>
-      </div>
-      <span class="lab-entry-link">Read →</span>
-    </a>
-  </section>
-
-  <section class="lab-principle reveal" aria-label="Laboratory principle">
-    <p>This is not about quitting technology. It is about ending its control over your attention.</p>
-  </section>
 </main>
-
-<footer class="site-footer">
-  <a href="/" class="footer-logo">Slate &amp; Silicon</a>
-  <p>Slate &amp; Silicon is a digital detox laboratory for people who remember life before the feed.</p>
-  <ul class="footer-links">
-    <li><a href="/laboratory/">Laboratory</a></li>
-    <li><a href="/store/">Store</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/privacy/">Privacy</a></li>
-  </ul>
-</footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('on');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
-
-  const filterButtons = document.querySelectorAll('[data-filter]');
-  const entries = document.querySelectorAll('.lab-entry');
-
-  filterButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
-      filterButtons.forEach((item) => item.classList.remove('active'));
-      button.classList.add('active');
-
-      entries.forEach((entry) => {
-        entry.hidden = filter !== 'all' && entry.dataset.type !== filter;
-      });
-    });
-  });
-</script>
 
 </body>
 </html>
