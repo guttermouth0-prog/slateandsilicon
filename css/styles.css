@@ -483,81 +483,65 @@ nav, .site-nav {
   .entry-list em { grid-column: auto; }
   .site-footer, footer { flex-direction: column; align-items: flex-start; }
 }
-/* === BRUTALIST VISUAL OVERHAUL (NON-DESTRUCTIVE) === */
-
-/* BASE */
-body {
-  background: #0D0F12 !important;
-  color: #EEE9DD !important;
+/* NAVBAR BASE */
+.nav {
+  position: sticky;
+  top: 0;
+  background: #0D0F12;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(238,235,225,0.14);
 }
 
-/* STRUCTURE */
-.container, .wrapper, .content {
+/* INNER STRUCTURE */
+.nav-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 18px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* SECTION DIVIDERS */
-section {
+/* LEFT (LOGO) */
+.nav-left {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+/* RIGHT (LINKS) */
+.nav-right {
+  display: flex;
+  gap: 28px;
+}
+
+/* LINKS */
+.nav-right a {
+  text-decoration: none;
+  color: #EEE9DD;
+  font-size: 13px;
+  letter-spacing: 0.08em;
   position: relative;
 }
 
-section::before {
+/* HOVER (sharp, not soft) */
+.nav-right a::after {
   content: "";
   position: absolute;
-  left: 20px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: rgba(238,235,225,0.05);
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 1px;
+  background: #EEE9DD;
+  transition: width 0.15s ease;
 }
 
-/* TYPOGRAPHY HARDENING */
-h1, h2, h3 {
-  letter-spacing: 0.02em;
+.nav-right a:hover::after {
+  width: 100%;
 }
 
-p {
-  max-width: 520px;
-}
-
-/* REMOVE SOFT BACKGROUNDS */
-.hero, header {
-  background: none !important;
-}
-
-/* CARD SYSTEM */
-.card, .feature, .box, .tile {
-  border: 1px solid rgba(238,235,225,0.14) !important;
-  background: #14171B !important;
-  border-radius: 2px !important;
+/* REMOVE SOFTNESS */
+.nav, .nav * {
+  border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 24px;
-}
-
-/* BUTTONS */
-button, .btn, a.button {
-  border: 1px solid #EEE9DD !important;
-  background: transparent !important;
-  color: #EEE9DD !important;
-  border-radius: 2px !important;
-  padding: 12px 18px;
-  text-decoration: none;
-}
-
-button:hover, .btn:hover {
-  background: #EEE9DD !important;
-  color: #0D0F12 !important;
-}
-
-/* GLOBAL SOFTNESS REMOVAL */
-* {
-  box-shadow: none !important;
-}
-
-/* IMAGE DE-EMPHASIS */
-img {
-  filter: grayscale(100%);
-  opacity: 0.85;
 }
