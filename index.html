@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/system.css">
 </head>
 <body class="home lab-theme">
 
@@ -25,7 +26,7 @@
     <li><a href="/laboratory/">Laboratory</a></li>
     <li><a href="/store/">Store</a></li>
     <li><a href="/about/">About</a></li>
-    <li><a class="nav-cta" href="/detox-planner/">Get the Planner</a></li>
+    <li><a class="nav-cta" href="/detox-planner/">Get the Reset</a></li>
   </div>
 
   </div>
@@ -38,13 +39,9 @@
         <p class="eyebrow">Digital Detox Laboratory</p>
         <h1 id="hero-title">Your focus didn’t disappear. It was engineered out of you.</h1>
         <p class="subtle">A structured recovery system for people who remember life before the feed.</p>
-        <div class="cta-row">
-          <a href="/detox-planner/" class="btn btn-fill">Download the Detox Planner</a>
-          <a href="/laboratory/" class="btn btn-line">Enter the Laboratory</a>
-        </div>
-      </div>
-      <div class="lab-visual" aria-hidden="true">
-        <span></span><span></span><span></span><span></span>
+
+        <a href="/detox-planner/" class="cta">Get the Reset</a>
+
       </div>
     </div>
   </section>
@@ -78,71 +75,7 @@
     </div>
   </section>
 
-  <section class="quiet-section tools" aria-labelledby="tools-title">
-    <div class="section-header reveal">
-      <p class="eyebrow">Issued Tools</p>
-      <h2 id="tools-title">Not products. Instruments.</h2>
-    </div>
-    <div class="tool-grid reveal">
-      <a href="/detox-planner/" class="tool-card"><small>ISSUED TOOL 001</small><h3>Detox Planner</h3><p>A 7-day analog reset for attention, inputs, and evening shutdown.</p><span>Access Tool →</span></a>
-      <a href="/store/" class="tool-card"><small>ISSUED TOOL 002</small><h3>Focus Protocol Sheets</h3><p>Printable operating procedures for deep work and low-noise routines.</p><span>View Store →</span></a>
-      <a href="/laboratory/" class="tool-card"><small>FIELD NOTES</small><h3>Laboratory Entries</h3><p>Experiments and essays for understanding how your attention was captured.</p><span>Read Entries →</span></a>
-    </div>
-  </section>
-
-  <section class="manifesto-strip" aria-label="Manifesto">
-    <p class="reveal">This is not about quitting technology.<br>It’s about ending its control over you.</p>
-  </section>
-
-  <section class="quiet-section lab-preview" aria-labelledby="lab-preview-title">
-    <div class="section-header reveal">
-      <p class="eyebrow">Laboratory Preview</p>
-      <h2 id="lab-preview-title">Recent operating notes.</h2>
-    </div>
-    <div class="entry-list reveal">
-      <a href="/laboratory/"><span>LOG 001</span><strong>The 8PM Shutdown Protocol</strong><em>Reduce cognitive residue before sleep.</em></a>
-      <a href="/laboratory/"><span>LOG 002</span><strong>The Attention Heatmap</strong><em>Find where your focus leaks during the day.</em></a>
-      <a href="/laboratory/"><span>LOG 003</span><strong>The Single-Tab Protocol</strong><em>One browser tab. One task. One hour.</em></a>
-    </div>
-  </section>
-
-  <section class="email quiet-section" aria-labelledby="email-title">
-    <div class="copy-stack narrow reveal">
-      <p class="eyebrow">Weekly Field Note</p>
-      <h2 id="email-title">No noise. Just signal.</h2>
-      <p>Receive one short field note from the Laboratory: experiments, tools, and analog recovery protocols.</p>
-      <form class="quiet-form" action="#" method="post">
-        <label class="sr-only" for="email-address">Email address</label>
-        <input id="email-address" type="email" name="email" placeholder="your@email.com" autocomplete="email">
-        <button type="submit">Subscribe</button>
-      </form>
-      <p class="form-note">No spam. No algorithm. No pressure.</p>
-    </div>
-  </section>
 </main>
-
-<footer class="site-footer">
-  <a href="/" class="footer-logo">Slate &amp; Silicon</a>
-  <p>Slate &amp; Silicon is a digital detox laboratory for people who remember life before the feed.</p>
-  <ul class="footer-links">
-    <li><a href="/laboratory/">Laboratory</a></li>
-    <li><a href="/store/">Store</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/privacy/">Privacy</a></li>
-  </ul>
-</footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('on');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.16 });
-  document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
-</script>
 
 </body>
 </html>
