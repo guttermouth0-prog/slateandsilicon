@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0d">
   <title>The Detox Planner — Slate & Silicon</title>
-  <meta name="description" content="Download the free Slate & Silicon Detox Planner: a 7-day analog reset for reducing digital noise, finding attention leaks, and rebuilding focus.">
+  <meta name="description" content="A simple 7-day reset to get your attention back.">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XZ84PSHRX9"></script>
@@ -16,23 +17,53 @@
     gtag('event', 'planner_page_view');
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/system.css">
 </head>
 <body>
 
-<main class="planner-page">
-  <header class="planner-hero">
-    <div>
-      <h1>The Detox Planner</h1>
-      <form class="conversion-form" action="https://slate-silicon.kit.com/68998098aa" method="get">
-        <input id="planner-email" type="email" name="email_address" placeholder="your@email.com">
-        <button type="submit" onclick="gtag('event','planner_submit_click')">Download Free</button>
-      </form>
-    </div>
-  </header>
+<nav class="site-nav">
+  <a href="/" class="logo">Slate & Silicon</a>
+
+  <ul class="nav-links">
+    <li><a href="/start-here/">Start Here</a></li>
+    <li><a href="/laboratory/">Laboratory</a></li>
+    <li><a href="/store/">Store</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+
+  <a href="/detox-planner/" class="nav-cta">Get the Reset</a>
+</nav>
+
+<main>
+
+<section>
+  <div class="reset-container">
+
+    <h1>
+      Get your attention back.
+    </h1>
+
+    <p class="body-text">
+      A simple 7-day reset to reduce noise, break compulsive habits, and think clearly again.
+    </p>
+
+    <ul class="planner-points">
+      <li>Find where your attention leaks</li>
+      <li>Reduce compulsive checking</li>
+      <li>Rebuild focus without apps</li>
+    </ul>
+
+    <form class="conversion-form" action="https://slate-silicon.kit.com/68998098aa" method="get">
+      <input type="email" name="email_address" placeholder="your@email.com">
+      <button type="submit" onclick="gtag('event','planner_submit_click')">Download Free</button>
+    </form>
+
+    <p class="cta-support">No signup friction. Instant access.</p>
+
+  </div>
+</section>
+
 </main>
 
 </body>
