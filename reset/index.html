@@ -6,91 +6,34 @@
   <meta name="theme-color" content="#0b0c0d">
   <title>Reset — Slate & Silicon</title>
   <meta name="description" content="A simple 7-day reset to get your attention back.">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XZ84PSHRX9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-XZ84PSHRX9');
+  </script>
+
   <link rel="stylesheet" href="/css/styles.css">
   <style>
-    body {
-      background: #0b0c0d;
-      color: #e8e2d6;
-      font-family: Inter, system-ui, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 1.5rem;
-    }
-
-    .reset-container {
-      max-width: 420px;
-      width: 100%;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      color: #9b9890;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta {
-      display: block;
-      width: 100%;
-      height: 52px;
-      background: #8aa8b4;
-      color: #0b0c0d;
-      border: none;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      text-align: center;
-      line-height: 52px;
-      margin-bottom: 1rem;
-      text-decoration: none;
-    }
-
-    .micro {
-      font-size: 0.75rem;
-      color: #626866;
-      margin-bottom: 2rem;
-    }
-
-    .links a {
-      display: block;
-      font-size: 0.8rem;
-      color: #9b9890;
-      text-decoration: none;
-      margin-bottom: 0.6rem;
-    }
-
-    .links a:hover {
-      color: #8aa8b4;
-    }
+    body { background: #0b0c0d; color: #e8e2d6; font-family: Inter, system-ui, sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; padding:1.5rem; }
+    .reset-container { max-width:420px; width:100%; }
+    h1 { font-size:2.2rem; line-height:1.05; letter-spacing:-0.02em; margin-bottom:1rem; }
+    p { color:#9b9890; font-size:0.95rem; margin-bottom:1.5rem; }
+    .cta { display:block; width:100%; height:52px; background:#8aa8b4; color:#0b0c0d; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; text-align:center; line-height:52px; margin-bottom:1rem; text-decoration:none; }
+    .micro { font-size:0.75rem; color:#626866; margin-bottom:2rem; }
+    .links a { display:block; font-size:0.8rem; color:#9b9890; text-decoration:none; margin-bottom:0.6rem; }
+    .links a:hover { color:#8aa8b4; }
   </style>
 </head>
 <body>
   <div class="reset-container">
-    <h1>
-      You are not distracted.<br>
-      You are overloaded.
-    </h1>
-
-    <p>
-      This is a simple 7-day reset to get your attention back.
-    </p>
-
-    <a href="/detox-planner/" class="cta">
-      Download Planner
-    </a>
-
-    <div class="micro">
-      No app. No subscription. Takes less than 60 seconds.
-    </div>
-
+    <h1>You are not distracted.<br>You are overloaded.</h1>
+    <p>This is a simple 7-day reset to get your attention back.</p>
+    <a href="/detox-planner/" class="cta" onclick="gtag('event','reset_download_click')">Download Planner</a>
+    <div class="micro">No app. No subscription. Takes less than 60 seconds.</div>
     <div class="links">
       <a href="/start-here/">Start Here</a>
       <a href="/laboratory/">Enter the Laboratory</a>
