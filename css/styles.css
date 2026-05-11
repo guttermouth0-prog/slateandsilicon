@@ -470,6 +470,7 @@ nav, .site-nav {
     gap: 1rem; padding: 1.25rem; background: rgba(8,9,10,.98); border-bottom: 1px solid var(--line);
   }
   .nav-links.open { display: flex; }
+  .quiet-section:last-of-type
   .quiet-section, .section, .page-hero { width: min(100% - 2rem, var(--max)); }
   .lab-hero, .hero { min-height: 82vh; }
   h1 { font-size: clamp(3.4rem, 16vw, 5.4rem); }
@@ -583,8 +584,8 @@ body {
 .diagnosis-stack {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin-top: 24px;
+  gap: 18px;
+  margin-top: 16px;
 }
 
 .diagnosis-item {
