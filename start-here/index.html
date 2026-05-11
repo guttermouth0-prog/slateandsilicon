@@ -4,134 +4,107 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Start Here — Slate & Silicon</title>
-  <meta name="description" content="Start here with Slate & Silicon: a digital detox laboratory for rebuilding attention, lowering digital noise, and recovering life beyond the feed.">
+  <meta name="description" content="Start here with Slate & Silicon: a structured digital detox system for rebuilding attention.">
+  <link rel="icon" type="image/svg+xml" href="/logo/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/system.css?v=3">
   <style>
-    .start-page {
+    .inner-page {
       width: min(var(--max), calc(100% - 2.5rem));
       margin: 0 auto;
-      padding: clamp(4.5rem, 8vw, 8rem) 0 clamp(7rem, 12vw, 12rem);
+      padding: clamp(4rem, 7vw, 7rem) 0 clamp(5rem, 9vw, 8rem);
     }
 
-    .start-hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, .52fr);
-      gap: clamp(2rem, 7vw, 7rem);
-      align-items: end;
-      padding-bottom: clamp(3rem, 6vw, 5rem);
-      border-bottom: 1px solid var(--line-strong);
+    .inner-section {
+      padding: clamp(3.5rem, 7vw, 6rem) 0;
+      border-top: 1px solid var(--line);
     }
 
-    .start-hero h1 {
-      max-width: 9ch;
-      margin-bottom: 1.25rem;
+    .inner-section:first-child {
+      border-top: 0;
+      padding-top: 0;
     }
 
-    .start-hero .body-text {
-      max-width: 58ch;
+    .inner-header {
+      max-width: 760px;
+      margin-bottom: clamp(1.25rem, 3vw, 2rem);
     }
 
-    .start-card {
-      border: 1px solid var(--line);
-      background: rgba(232,226,214,.022);
-      padding: clamp(1.25rem, 3vw, 2rem);
+    .inner-header h1,
+    .inner-header h2 {
+      max-width: 11ch;
+      margin: 0;
     }
 
-    .start-card p {
+    .inner-body {
+      max-width: 62ch;
+    }
+
+    .inner-body p {
       color: var(--muted);
-    }
-
-    .start-card strong {
-      display: block;
-      color: var(--white);
-      font-family: var(--display);
-      font-size: clamp(2.1rem, 4vw, 4rem);
-      line-height: .88;
-      letter-spacing: -.035em;
-      text-transform: uppercase;
+      font-size: clamp(1rem, 1.3vw, 1.1rem);
+      line-height: 1.75;
       margin-bottom: 1rem;
     }
 
-    .start-diagnostic {
-      padding: clamp(3.5rem, 7vw, 6rem) 0;
-      border-bottom: 1px solid var(--line-strong);
-    }
-
-    .diagnostic-statement {
-      max-width: 920px;
-      color: var(--white);
-      font-family: var(--display);
-      font-size: clamp(2.7rem, 5.8vw, 6rem);
-      font-weight: 700;
-      letter-spacing: -.035em;
-      line-height: .9;
-      text-transform: uppercase;
-    }
-
-    .path-grid {
+    .protocol-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       border: 1px solid var(--line);
       margin-top: clamp(2rem, 5vw, 4rem);
+      background: rgba(232,226,214,.015);
     }
 
-    .path-step {
-      min-height: 315px;
-      padding: clamp(1.45rem, 3vw, 2.4rem);
+    .protocol-card {
+      min-height: 260px;
+      padding: clamp(1.4rem, 3vw, 2.2rem);
       border-right: 1px solid var(--line);
-      background: rgba(232,226,214,.016);
+      background: rgba(232,226,214,.012);
     }
 
-    .path-step:last-child {
+    .protocol-card:last-child {
       border-right: 0;
     }
 
-    .path-step small {
+    .protocol-card small {
       display: block;
       color: var(--blue);
-      font-size: .68rem;
+      font-size: .66rem;
       font-weight: 800;
       letter-spacing: .16em;
       text-transform: uppercase;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.2rem;
     }
 
-    .path-step h2 {
-      font-size: clamp(2.2rem, 4.2vw, 4.4rem);
-      max-width: 8ch;
-      margin-bottom: 1rem;
+    .protocol-card h3 {
+      color: var(--white);
+      margin-bottom: .85rem;
     }
 
-    .path-step p {
+    .protocol-card p {
       color: var(--muted);
+      line-height: 1.75;
     }
 
-    .start-tools {
-      display: grid;
-      grid-template-columns: minmax(0, .48fr) minmax(0, 1fr);
-      gap: clamp(2rem, 6vw, 6rem);
-      padding: clamp(4rem, 8vw, 7rem) 0;
-      border-bottom: 1px solid var(--line-strong);
-    }
-
-    .recommended-list {
+    .route-list {
       border-top: 1px solid var(--line);
+      margin-top: 2rem;
     }
 
-    .recommended-item {
+    .route-item {
       display: grid;
-      grid-template-columns: 120px minmax(0, 1fr) 130px;
-      gap: clamp(1rem, 3vw, 2rem);
+      grid-template-columns: 110px minmax(0,1fr) 110px;
+      gap: 1.5rem;
       align-items: baseline;
-      padding: 1.45rem 0;
+      padding: 1.25rem 0;
       border-bottom: 1px solid var(--line);
       text-decoration: none;
     }
 
-    .recommended-item small {
+    .route-item small {
       color: var(--blue);
       font-size: .68rem;
       font-weight: 800;
@@ -139,7 +112,7 @@
       text-transform: uppercase;
     }
 
-    .recommended-item strong {
+    .route-item strong {
       display: block;
       color: var(--white);
       font-family: var(--display);
@@ -150,125 +123,65 @@
       margin-bottom: .35rem;
     }
 
-    .recommended-item p {
+    .route-item p {
       color: var(--muted);
     }
 
-    .recommended-item span {
+    .route-item span {
       justify-self: end;
       color: var(--slate);
       font-size: .68rem;
       font-weight: 800;
       letter-spacing: .13em;
       text-transform: uppercase;
-      transition: color .25s var(--ease);
     }
 
-    .recommended-item:hover span,
-    .recommended-item:hover strong {
+    .route-item:hover strong,
+    .route-item:hover span {
       color: var(--blue);
     }
 
-    .planner-block {
-      display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(280px, .55fr);
-      gap: clamp(2rem, 6vw, 6rem);
-      align-items: center;
-      padding: clamp(4rem, 8vw, 7rem) 0;
-      border-bottom: 1px solid var(--line-strong);
-    }
-
-    .planner-object {
-      min-height: 390px;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(90deg, rgba(232,226,214,.04) 1px, transparent 1px),
-        linear-gradient(rgba(232,226,214,.04) 1px, transparent 1px),
-        rgba(20,23,26,.55);
-      background-size: 42px 42px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .planner-object::before {
-      content: 'DETOX PLANNER / 7 DAY RESET';
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      color: var(--slate);
-      font-size: .62rem;
-      font-weight: 800;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
-
-    .planner-object::after {
-      content: '';
-      position: absolute;
-      inset: 27% 18% 22% 18%;
-      border: 1px solid var(--line-strong);
-      border-left: 3px solid var(--blue);
-      background: rgba(232,226,214,.03);
-      box-shadow: 18px 18px 0 rgba(127,167,184,.08);
-    }
-
-    .start-manifesto {
-      padding-top: clamp(4rem, 8vw, 7rem);
-    }
-
-    .start-manifesto p {
-      max-width: 970px;
-      color: var(--white);
-      font-family: var(--display);
-      font-size: clamp(2.7rem, 6vw, 6.2rem);
-      font-weight: 700;
-      letter-spacing: -.035em;
-      line-height: .9;
-      text-transform: uppercase;
-    }
-
     @media (max-width: 980px) {
-      .start-hero,
-      .start-tools,
-      .planner-block {
+      .protocol-grid {
         grid-template-columns: 1fr;
       }
 
-      .path-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .path-step {
+      .protocol-card {
+        min-height: auto;
         border-right: 0;
         border-bottom: 1px solid var(--line);
-        min-height: auto;
       }
 
-      .path-step:last-child {
+      .protocol-card:last-child {
         border-bottom: 0;
       }
 
-      .recommended-item {
-        grid-template-columns: 90px minmax(0, 1fr);
+      .route-item {
+        grid-template-columns: 90px minmax(0,1fr);
       }
 
-      .recommended-item span {
+      .route-item span {
         grid-column: 2;
         justify-self: start;
       }
     }
 
     @media (max-width: 640px) {
-      .start-page {
+      .inner-page {
         width: min(100% - 2rem, var(--max));
+        padding-top: 3rem;
       }
 
-      .recommended-item {
+      .inner-section {
+        padding: 3rem 0;
+      }
+
+      .route-item {
         grid-template-columns: 1fr;
         gap: .45rem;
       }
 
-      .recommended-item span {
+      .route-item span {
         grid-column: auto;
       }
     }
@@ -277,84 +190,86 @@
 <body>
 
 <nav class="site-nav" aria-label="Primary navigation">
-  <a href="/" class="logo mark-logo"><span class="signal-mark" aria-hidden="true"></span>Slate <span>&amp;</span> Silicon</a>
-  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="/" class="logo">
+    <img src="/logo/logo-dark.svg" alt="Slate & Silicon">
+  </a>
   <ul class="nav-links">
     <li><a href="/start-here/" class="active">Start Here</a></li>
     <li><a href="/laboratory/">Laboratory</a></li>
-    <li><a href="/store/">Store</a></li>
     <li><a href="/about/">About</a></li>
-    <li><a class="nav-cta" href="/detox-planner/">Get the Planner</a></li>
   </ul>
+  <a class="nav-cta" href="/detox-planner/">Get the Reset</a>
 </nav>
 
-<main class="start-page">
-  <header class="start-hero reveal">
-    <div>
+<main class="inner-page">
+
+  <section class="inner-section reveal">
+    <div class="inner-header">
       <p class="eyebrow">Start Here</p>
-      <h1>You are not distracted. You are overloaded.</h1>
-      <p class="body-text">Slate & Silicon is a digital detox laboratory for rebuilding attention after years of feeds, alerts, tabs, and engineered interruption.</p>
-      <div class="cta-row">
-        <a href="/detox-planner/" class="btn btn-fill">Get the Detox Planner</a>
-        <a href="/laboratory/" class="btn btn-line">Enter the Laboratory</a>
-      </div>
+      <h1>Rebuilding attention is a process.</h1>
     </div>
-    <aside class="start-card">
-      <strong>First principle</strong>
+    <div class="inner-body">
+      <p>This is not a collection of content. It is a structured system designed to reverse specific patterns.</p>
       <p>The goal is not to become anti-technology. The goal is to stop letting technology decide the shape of your attention.</p>
-    </aside>
-  </header>
-
-  <section class="start-diagnostic reveal" aria-label="Orientation">
-    <p class="eyebrow">Orientation</p>
-    <p class="diagnostic-statement">Your focus did not vanish. It adapted to a system that rewards interruption.</p>
+    </div>
   </section>
 
-  <section class="start-path reveal" aria-labelledby="path-title">
-    <p class="eyebrow">The Path</p>
-    <h2 id="path-title">Three moves. No theatrics.</h2>
-    <div class="path-grid">
-      <article class="path-step">
+  <section class="inner-section reveal">
+    <div class="inner-header">
+      <p class="eyebrow">01 / What Changed</p>
+      <h2>Continuous load changes the system.</h2>
+    </div>
+    <div class="inner-body">
+      <p>Constant input, interruptions, and infinite feeds have changed how attention operates.</p>
+      <p>The result is not a lack of discipline. It is a system under continuous load.</p>
+    </div>
+  </section>
+
+  <section class="inner-section reveal">
+    <div class="inner-header">
+      <p class="eyebrow">02 / The Method</p>
+      <h2>Three moves. No theatrics.</h2>
+    </div>
+
+    <div class="protocol-grid">
+      <article class="protocol-card">
         <small>01 / Understand</small>
-        <h2>Name the system.</h2>
-        <p>Before you can change your behavior, you need to see what is shaping it: feeds, defaults, notification loops, and frictionless checking.</p>
+        <h3>Name the system.</h3>
+        <p>See what is shaping your behavior: feeds, defaults, notification loops, and frictionless checking.</p>
       </article>
-      <article class="path-step">
+      <article class="protocol-card">
         <small>02 / Interrupt</small>
-        <h2>Break the pattern.</h2>
-        <p>Small constraints create space. Turn down inputs, add friction, and make distraction slightly less automatic.</p>
+        <h3>Break the pattern.</h3>
+        <p>Small constraints create space. Turn down inputs, add friction, and make distraction less automatic.</p>
       </article>
-      <article class="path-step">
+      <article class="protocol-card">
         <small>03 / Rebuild</small>
-        <h2>Recover depth.</h2>
-        <p>Use analog rituals, defined work blocks, and low-noise routines to rebuild your tolerance for silence, boredom, and focus.</p>
+        <h3>Recover depth.</h3>
+        <p>Use analog rituals, defined work blocks, and low-noise routines to rebuild tolerance for silence and focus.</p>
       </article>
     </div>
   </section>
 
-  <section class="planner-block reveal" aria-labelledby="planner-title">
-    <div>
-      <p class="eyebrow">First Tool</p>
-      <h2 id="planner-title">Start with the Detox Planner.</h2>
-      <p class="body-text">A 7-day reset built to lower input load, expose attention leaks, and help you design a calmer operating rhythm without deleting your life or pretending the internet does not exist.</p>
-      <div class="cta-row">
-        <a href="/detox-planner/" class="btn btn-fill">Download Planner</a>
-        <a href="/laboratory/" class="btn btn-line">View Experiments</a>
-      </div>
+  <section class="inner-section reveal">
+    <div class="inner-header">
+      <p class="eyebrow">03 / Where To Begin</p>
+      <h2>Start with one controlled experiment.</h2>
     </div>
-    <div class="planner-object" aria-hidden="true"></div>
+    <div class="inner-body">
+      <p>You do not need to fix everything at once. Start by interrupting one pattern.</p>
+      <p>Run one experiment. Observe what changes. Continue only after you have evidence.</p>
+      <a href="/laboratory/" class="inline-cta strong">Begin with EXP-01 →</a>
+    </div>
   </section>
 
-  <section class="start-tools reveal" aria-labelledby="recommended-title">
-    <div>
+  <section class="inner-section reveal">
+    <div class="inner-header">
       <p class="eyebrow">Recommended Route</p>
-      <h2 id="recommended-title">Do this first.</h2>
-      <p class="body-text">Use this sequence if you are new. It gives you orientation, one practical reset, and a low-pressure way into the Laboratory.</p>
+      <h2>Do this first.</h2>
     </div>
-    <div class="recommended-list">
-      <a href="/detox-planner/" class="recommended-item">
+
+    <div class="route-list">
+      <a href="/detox-planner/" class="route-item">
         <small>STEP 01</small>
         <div>
           <strong>Download the Detox Planner</strong>
@@ -362,7 +277,7 @@
         </div>
         <span>Start →</span>
       </a>
-      <a href="/laboratory/" class="recommended-item">
+      <a href="/laboratory/" class="route-item">
         <small>STEP 02</small>
         <div>
           <strong>Run One Experiment</strong>
@@ -370,20 +285,20 @@
         </div>
         <span>Enter →</span>
       </a>
-      <a href="/store/" class="recommended-item">
-        <small>STEP 03</small>
-        <div>
-          <strong>Build Your Analog Stack</strong>
-          <p>Add tools only after you understand where your attention is leaking.</p>
-        </div>
-        <span>View →</span>
-      </a>
     </div>
   </section>
 
-  <section class="start-manifesto reveal" aria-label="Manifesto">
-    <p>This is not self-improvement theater. This is attention recovery for people who lived through the rise of the feed.</p>
+  <section class="inner-section reveal">
+    <div class="inner-header">
+      <p class="eyebrow">Final Note</p>
+      <h2>Less input. More signal.</h2>
+    </div>
+    <div class="inner-body">
+      <p>This is attention recovery for people who lived through the rise of the feed.</p>
+      <a href="/laboratory/" class="inline-cta strong">Enter the Laboratory →</a>
+    </div>
   </section>
+
 </main>
 
 <footer class="site-footer">
