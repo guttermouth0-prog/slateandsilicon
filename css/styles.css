@@ -36,14 +36,15 @@ html { scroll-behavior: smooth; }
 
 body {
   min-height: 100vh;
+  padding-top: 52px;
   background:
     linear-gradient(90deg, var(--grid) 1px, transparent 1px),
     linear-gradient(180deg, var(--grid) 1px, transparent 1px),
     radial-gradient(circle at 82% 12%, rgba(127,167,184,.09), transparent 34rem),
     radial-gradient(circle at 10% 0%, rgba(200,160,106,.055), transparent 28rem),
-    var(--bunker);
+    #111315;
   background-size: 64px 64px, 64px 64px, auto, auto, auto;
-  color: var(--bone);
+  color: #d6d1c7;
   font-family: var(--body);
   font-weight: 300;
   line-height: 1.72;
@@ -133,15 +134,8 @@ p { color: var(--muted); }
 nav, .site-nav {
   position: sticky;
   top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: .9rem clamp(1.25rem, 4vw, 3rem);
-  background: rgba(8, 9, 10, .82);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(18px);
+  height: 52px;
+  padding: 0 16px;
 }
 
 .logo {
@@ -582,7 +576,16 @@ body {
 }
 
 .diagnosis-stack {
-  gap: 24px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.diagnosis-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .diagnosis-item {
