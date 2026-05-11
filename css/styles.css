@@ -36,7 +36,6 @@ html { scroll-behavior: smooth; }
 
 body {
   min-height: 100vh;
-  padding-top: 52px;
   background:
     linear-gradient(90deg, var(--grid) 1px, transparent 1px),
     linear-gradient(180deg, var(--grid) 1px, transparent 1px),
@@ -132,10 +131,7 @@ p { color: var(--muted); }
 
 /* Navigation */
 nav, .site-nav {
-  position: sticky;
-  top: 0;
-  height: 52px;
-  padding: 0 16px;
+  position: relative;
 }
 
 .logo {
@@ -572,7 +568,6 @@ p, h1, h2, h3, a {
 }
 
 body {
-  padding-top: 52px;
 }
 
 .diagnosis-stack {
