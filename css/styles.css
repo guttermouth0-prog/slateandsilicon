@@ -181,9 +181,7 @@ nav, .site-nav {
 
 /* Layout */
 .quiet-section, .section {
-  width: min(var(--max), calc(100% - 2.5rem));
-  margin: 0 auto;
-  padding: clamp(5.5rem, 11vw, 11rem) 0;
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
 }
 .section-alt { background: rgba(232,226,214,.025); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .section-alt .section { padding: clamp(5rem, 9vw, 8rem) 0; }
@@ -462,6 +460,9 @@ nav, .site-nav {
 }
 
 @media (max-width: 720px) {
+  .quiet-section, .section {
+  padding: 3rem 0;
+}
   nav, .site-nav { padding: 1rem 1.25rem; }
   .nav-toggle { display: flex; }
   .nav-links {
