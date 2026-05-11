@@ -182,6 +182,12 @@ nav, .site-nav {
 /* Layout */
 .quiet-section, .section {
   padding: clamp(3.5rem, 8vw, 6rem) 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.quiet-section:first-of-type,
+.section:first-of-type {
+  border-top: none;
 }
 .section-alt { background: rgba(232,226,214,.025); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .section-alt .section { padding: clamp(5rem, 9vw, 8rem) 0; }
