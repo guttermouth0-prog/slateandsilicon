@@ -545,3 +545,48 @@ nav, .site-nav {
   border-radius: 0 !important;
   box-shadow: none !important;
 }
+
+/* === LAUNCH OVERRIDE (FINAL) === */
+
+html, body {
+  background: #111315 !important;
+  color: #d6d1c7 !important;
+}
+
+body {
+  background-image: none !important;
+}
+
+body::before,
+body::after {
+  display: none !important;
+}
+
+nav, .site-nav {
+  height: 52px !important;
+  padding: 0 16px !important;
+  background: rgba(17,19,21,0.85) !important;
+  backdrop-filter: blur(6px);
+}
+
+.logo img {
+  height: 22px !important;
+}
+
+p, h1, h2, h3, a {
+  color: #d6d1c7 !important;
+}
+
+body {
+  padding-top: 52px;
+}
+
+.diagnosis-stack {
+  gap: 24px !important;
+}
+
+.diagnosis-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
