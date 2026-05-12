@@ -5,152 +5,392 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Start Here — Slate & Silicon</title>
   <meta name="description" content="Start here with Slate & Silicon: a structured digital detox system for rebuilding attention.">
-  <link rel="icon" type="image/svg+xml" href="/logo/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@300;700;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/system.css?v=3">
-  
+  <style>
+
+    .start-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* Protocol cards — 3-col grid matching card-grid pattern */
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--cyan-border);
+      border: 1px solid var(--cyan-border);
+      margin-top: 2.5rem;
+    }
+
+    .protocol-card {
+      background: var(--bunker);
+      padding: 1.75rem;
+      transition: background 0.2s;
+    }
+    .protocol-card:hover { background: var(--surface); }
+
+    .protocol-card small {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.5rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .protocol-card h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.6rem;
+    }
+
+    .protocol-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* Route list — styled like include-list / heat-list */
+    .route-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--cyan-border);
+      border: 1px solid var(--cyan-border);
+      margin-top: 2.5rem;
+    }
+
+    .route-item {
+      background: var(--bunker);
+      padding: 1.5rem 1.75rem;
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 1.25rem;
+      align-items: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .route-item:hover { background: var(--surface); }
+
+    .route-item small {
+      font-family: var(--mono);
+      font-size: 0.46rem;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--cyan-dim);
+      border: 1px solid var(--cyan-border);
+      padding: 3px 7px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .route-item strong {
+      display: block;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .route-item p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .route-arrow {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--cyan);
+      transition: transform 0.2s;
+    }
+    .route-item:hover .route-arrow { transform: translateX(4px); }
+
+    /* Sidebar */
+    .start-sidebar { position: sticky; top: 6rem; }
+
+    .sidebar-block {
+      border: 1px solid var(--cyan-border);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-title {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(176,212,222,0.08);
+    }
+
+    .principle-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(176,212,222,0.05);
+    }
+    .principle-item:last-child { border-bottom: none; }
+
+    .principle-num {
+      font-family: var(--mono);
+      font-size: 0.46rem;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .principle-text {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--white);
+    }
+
+    @media (max-width: 900px) {
+      .start-layout { grid-template-columns: 1fr; }
+      .start-sidebar { position: static; }
+      .protocol-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .route-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .route-arrow { display: none; }
+    }
+
+  </style>
 </head>
 <body>
 
-<nav class="site-nav" aria-label="Primary navigation">
-  <a href="/" class="logo">
-    <img src="/logo/logo-dark.svg" alt="Slate & Silicon">
-  </a>
+<!-- ══ NAV ══ -->
+<nav class="z">
+  <a href="/" class="logo">Slate <em>&</em> Silicon</a>
   <ul class="nav-links">
+    <li><a href="/">Home</a></li>
     <li><a href="/start-here/" class="active">Start Here</a></li>
     <li><a href="/laboratory/">Laboratory</a></li>
     <li><a href="/about/">About</a></li>
+    <li><a href="/store/">The Store</a></li>
+    <li><a href="/log/">The Log</a></li>
   </ul>
-  <a class="nav-cta" href="/detox-planner/">Get the Reset</a>
+  <a href="/detox-planner/" class="nav-cta">→ Free Planner</a>
+  <button class="nav-toggle" aria-label="Toggle navigation"
+    onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<main>
+<!-- ══ PAGE HERO ══ -->
+<div class="page-hero z">
+  <p class="tag">Entry Point // Initialization</p>
+  <h1>You are not<br>distracted.<br>You are overloaded.</h1>
+  <p class="body-text">This is not a collection of content. It is a structured system designed to reverse specific patterns. It removes what is unnecessary and restores what was lost.</p>
+</div>
 
-  <section class="section">
+<!-- ══ TICKER ══ -->
+<div class="ticker z">
+  <div class="ticker-track">
+    <span class="ticker-item">Understand the system <b>//</b></span>
+    <span class="ticker-item">Interrupt the pattern <b>//</b></span>
+    <span class="ticker-item">Rebuild the depth <b>//</b></span>
+    <span class="ticker-item">One experiment at a time <b>//</b></span>
+    <span class="ticker-item">No overhaul required <b>//</b></span>
+    <span class="ticker-item">Run the test <b>//</b></span>
+    <span class="ticker-item">Measure the output <b>//</b></span>
+    <span class="ticker-item">Understand the system <b>//</b></span>
+    <span class="ticker-item">Interrupt the pattern <b>//</b></span>
+    <span class="ticker-item">Rebuild the depth <b>//</b></span>
+    <span class="ticker-item">One experiment at a time <b>//</b></span>
+    <span class="ticker-item">No overhaul required <b>//</b></span>
+    <span class="ticker-item">Run the test <b>//</b></span>
+    <span class="ticker-item">Measure the output <b>//</b></span>
+  </div>
+</div>
 
-  <div class="section-header">
-    <p class="eyebrow">Start Here</p>
-      <h1>You are not distracted. You are overloaded.</h1>
-    </div>
-    <div class="copy stack">
-      <p>This is not a collection of content. It is a structured system designed to reverse specific patterns.</p>
-      <p>It removes what is unnecessary and restores what was lost.</p>
-    </div>
-    
-  </section>
+<!-- ══ MAIN ══ -->
+<div class="z">
+  <div class="section">
+    <div class="start-layout">
 
-  <section class="section">
-    <div class="inner-header">
-      <p class="eyebrow">01 / What Changed</p>
-      <h2>Continuous load changes the system.</h2>
-    </div>
-    <div class="inner-body">
-      <p>Constant input, interruptions, and infinite feeds have changed how attention operates.</p>
-      <p>The result is not a lack of discipline. It is a system under continuous load.</p>
-    </div>
-  </section>
+      <div>
 
-  <section class="section">
-    <div class="inner-header">
-      <p class="eyebrow">02 / The Method</p>
-      <h2>Three moves. No static.</h2>
-    </div>
-
-    <div class="protocol-grid">
-      <article class="protocol-card">
-        <small>01 / Understand</small>
-        <h3>Name the system.</h3>
-        <p>See what is shaping your behavior: feeds, defaults, notification loops, and frictionless checking.</p>
-      </article>
-      <article class="protocol-card">
-        <small>02 / Interrupt</small>
-        <h3>Break the pattern.</h3>
-        <p>Small constraints create space. Turn down inputs, add friction, and make distraction less automatic.</p>
-      </article>
-      <article class="protocol-card">
-        <small>03 / Rebuild</small>
-        <h3>Recover depth.</h3>
-        <p>Use analog rituals, defined work blocks, and low-noise routines to rebuild tolerance for silence and focus.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="inner-header">
-      <p class="eyebrow">03 / Where To Begin</p>
-      <h2>Start with one controlled experiment.</h2>
-    </div>
-    <div class="inner-body">
-      <p>You do not need to fix everything at once. Start by interrupting one pattern.</p>
-      <p>Run one experiment. Observe what changes. Continue only after you have evidence.</p>
-      <a href="/laboratory/" class="inline-cta strong">Begin with EXP-01 →</a>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="inner-header">
-      <p class="eyebrow">Recommended Route</p>
-      <h2>Do this first.</h2>
-    </div>
-
-    <div class="route-list">
-      <a href="/detox-planner/" class="route-item">
-        <small>STEP 01</small>
-        <div>
-          <strong>Download the Detox Planner</strong>
-          <p>Start with one analog tool instead of another app.</p>
+        <!-- WHAT CHANGED -->
+        <div class="reveal" style="margin-bottom: 4rem;">
+          <p class="tag">01 // What Changed</p>
+          <h2>Continuous load<br>changes the system.</h2>
+          <p class="body-text" style="margin-top: 1rem;">Constant input, interruptions, and infinite feeds have changed how attention operates. The result is not a lack of discipline. It is a system under continuous load.</p>
         </div>
-        <span>Start →</span>
-      </a>
-      <a href="/laboratory/" class="route-item">
-        <small>STEP 02</small>
-        <div>
-          <strong>Run One Experiment</strong>
-          <p>Pick one protocol. Observe what changes. Do not overhaul your life.</p>
+
+        <!-- THE METHOD -->
+        <div class="reveal" style="margin-bottom: 4rem;">
+          <p class="tag">02 // The Method</p>
+          <h2>Three moves.<br>No static.</h2>
+          <div class="protocol-grid">
+            <div class="protocol-card">
+              <small>01 // Understand</small>
+              <h3>Name the system.</h3>
+              <p>See what is shaping your behavior: feeds, defaults, notification loops, and frictionless checking.</p>
+            </div>
+            <div class="protocol-card">
+              <small>02 // Interrupt</small>
+              <h3>Break the pattern.</h3>
+              <p>Small constraints create space. Turn down inputs, add friction, and make distraction less automatic.</p>
+            </div>
+            <div class="protocol-card">
+              <small>03 // Rebuild</small>
+              <h3>Recover depth.</h3>
+              <p>Use analog rituals, defined work blocks, and low-noise routines to rebuild tolerance for silence and focus.</p>
+            </div>
+          </div>
         </div>
-        <span>Enter →</span>
-      </a>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="inner-header">
-      <p class="eyebrow">Final Note</p>
-      <h2>Less input. More signal.</h2>
-    </div>
-    <div class="inner-body">
-      <p>This is attention recovery for people who lived through the rise of the feed.</p>
-      <a href="/laboratory/" class="inline-cta strong">Enter the Laboratory →</a>
-    </div>
-  </section>
+        <!-- WHERE TO BEGIN -->
+        <div class="reveal" style="margin-bottom: 4rem;">
+          <p class="tag">03 // Where To Begin</p>
+          <h2>Start with one<br>controlled experiment.</h2>
+          <p class="body-text" style="margin-top: 1rem; margin-bottom: 2rem;">You do not need to fix everything at once. Start by interrupting one pattern. Run one experiment. Observe what changes. Continue only after you have evidence.</p>
+          <a href="/laboratory/" class="btn btn-fill">→ Begin with EXP-01</a>
+        </div>
 
-</main>
+        <hr class="rule" style="margin: 0 0 4rem;">
 
-<footer class="site-footer">
+        <!-- RECOMMENDED ROUTE -->
+        <div class="reveal">
+          <p class="tag">Recommended Route // Do This First</p>
+          <h2>Recommended<br>sequence.</h2>
+          <div class="route-list">
+            <a href="/detox-planner/" class="route-item">
+              <small>STEP 01</small>
+              <div>
+                <strong>Download the Detox Planner</strong>
+                <p>Start with one analog tool instead of another app. Seven days. Three sectors. No screen required.</p>
+              </div>
+              <span class="route-arrow">→</span>
+            </a>
+            <a href="/laboratory/" class="route-item">
+              <small>STEP 02</small>
+              <div>
+                <strong>Run One Experiment</strong>
+                <p>Pick one protocol. Observe what changes. Do not overhaul your life.</p>
+              </div>
+              <span class="route-arrow">→</span>
+            </a>
+            <a href="/log/" class="route-item">
+              <small>STEP 03</small>
+              <div>
+                <strong>Join The Log</strong>
+                <p>Weekly field data from active experiments. Transmitted every Tuesday. No filler.</p>
+              </div>
+              <span class="route-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="start-sidebar reveal">
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Core Principles</p>
+          <div class="principle-item">
+            <p class="principle-num">P-01</p>
+            <p class="principle-text">Willpower is the wrong tool</p>
+          </div>
+          <div class="principle-item">
+            <p class="principle-num">P-02</p>
+            <p class="principle-text">The problem is structural</p>
+          </div>
+          <div class="principle-item">
+            <p class="principle-num">P-03</p>
+            <p class="principle-text">Design over discipline</p>
+          </div>
+          <div class="principle-item">
+            <p class="principle-num">P-04</p>
+            <p class="principle-text">Data over feeling</p>
+          </div>
+          <div class="principle-item">
+            <p class="principle-num">P-05</p>
+            <p class="principle-text">Presence is the point</p>
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Free Download</p>
+          <p style="font-size:0.8rem; color:var(--muted); line-height:1.65; margin-bottom:1rem;">The Detox Planner. 7 days. 3 sectors. No app required. Start here.</p>
+          <a href="/detox-planner/" class="btn btn-fill" style="width:100%; justify-content:center;">→ Get the Planner</a>
+          <p class="form-note" style="margin-top:0.85rem;">No account. No algorithm.</p>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Status</p>
+          <div class="status"><div class="dot"></div> Laboratory: Operational</div>
+          <div class="status" style="margin-top:0.65rem;"><div class="dot"></div> EXP-01 through EXP-05 active</div>
+          <div class="status" style="margin-top:0.65rem;"><div class="dot"></div> The Log: every Tuesday</div>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Less input. More signal.</p>
+          <p style="font-size:0.8rem; color:var(--muted); line-height:1.65;">This is attention recovery for people who lived through the rise of the feed. The lab is open.</p>
+          <a href="/laboratory/" class="btn btn-line" style="margin-top:1.25rem;">Enter the Laboratory →</a>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER CTA ══ -->
+<div class="section-alt z">
+  <div class="footer-cta">
+    <div class="reveal">
+      <p class="tag">First Move</p>
+      <h2>The lab is open.<br><span class="cyan">Start the system.</span></h2>
+      <p class="body-text">The Detox Planner is the entry point. Seven days. Three sectors. No app. Run the first experiment and report your findings.</p>
+      <script async data-uid="68998098aa" src="https://slate-silicon.kit.com/68998098aa/index.js"></script>
+      <p class="form-note" style="text-align:center; margin-top:0.5rem;">No account. No algorithm. No noise.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="z">
   <a href="/" class="footer-logo">Slate &amp; Silicon</a>
-  <p>Slate &amp; Silicon is a digital detox laboratory for people who remember life before the feed.</p>
   <ul class="footer-links">
-    <li><a href="/laboratory/">Laboratory</a></li>
-    <li><a href="/store/">Store</a></li>
-    <li><a href="/about/">About</a></li>
+    <li><a href="https://www.instagram.com/slate.silicon/" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://www.facebook.com/slate.silicon/" target="_blank" rel="noopener">Facebook</a></li>
+    <li><a href="https://tiktok.com/@roman.prime78" target="_blank" rel="noopener">TikTok</a></li>
+    <li><a href="https://www.youtube.com/@slate.silicon" target="_blank" rel="noopener">YouTube</a></li>
+    <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="https://www.pinterest.com/slateandsilicon/" target="_blank" rel="noopener">Pinterest</a></li>
     <li><a href="/privacy/">Privacy</a></li>
+    <li><a href="/terms/">Terms</a></li>
+    <li><a href="/contact/">Contact</a></li>
   </ul>
+  <span class="footer-copy">© 2025 Slate &amp; Silicon. All systems operational.</span>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('on');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
 </body>
