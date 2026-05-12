@@ -3,94 +3,424 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b0c0d">
-  <title>Laboratory — Slate & Silicon</title>
-  <meta name="description" content="A collection of small experiments for reducing digital noise and rebuilding attention.">
+  <title>The Laboratory — Slate & Silicon</title>
+  <meta name="description" content="A collection of small experiments for reducing digital noise and rebuilding attention. Run the test. Measure the output. Report the findings.">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XZ84PSHRX9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XZ84PSHRX9');
   </script>
 
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@300;700;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/system.css">
+  <style>
+
+    .lab-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* Experiment list */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--cyan-border);
+      border: 1px solid var(--cyan-border);
+      margin-top: 2.5rem;
+    }
+
+    .exp-item {
+      background: var(--bunker);
+      padding: 1.75rem;
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 1.5rem;
+      align-items: start;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .exp-item:hover { background: var(--surface); }
+
+    .exp-id-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 2px;
+    }
+
+    .exp-id {
+      font-family: var(--mono);
+      font-size: 0.5rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--cyan-dim);
+      border: 1px solid var(--cyan-border);
+      padding: 3px 7px;
+      white-space: nowrap;
+    }
+
+    .exp-status {
+      font-family: var(--mono);
+      font-size: 0.42rem;
+      color: var(--slate);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    .exp-status.active { color: var(--cyan); }
+
+    .exp-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      line-height: 1.15;
+    }
+
+    .exp-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 0.85rem;
+    }
+
+    .exp-arrow {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--cyan);
+      transition: transform 0.2s;
+      padding-top: 2px;
+    }
+    .exp-item:hover .exp-arrow { transform: translateX(4px); }
+
+    /* Sidebar */
+    .lab-sidebar { position: sticky; top: 6rem; }
+
+    .sidebar-block {
+      border: 1px solid var(--cyan-border);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-title {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(176,212,222,0.08);
+    }
+
+    .sidebar-stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(176,212,222,0.05);
+    }
+    .sidebar-stat:last-child { border-bottom: none; }
+
+    .sidebar-stat-label {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .sidebar-stat-val {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--cyan);
+    }
+
+    .protocol-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.65;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(176,212,222,0.05);
+    }
+    .protocol-note:last-child { border-bottom: none; }
+
+    .protocol-note strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.46rem;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    @media (max-width: 900px) {
+      .lab-layout { grid-template-columns: 1fr; }
+      .lab-sidebar { position: static; }
+    }
+
+    @media (max-width: 720px) {
+      .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+      .exp-arrow { display: none; }
+    }
+
+  </style>
 </head>
 <body>
 
-<nav class="site-nav">
-  <a href="/" class="logo">Slate & Silicon</a>
+<!-- ══ NAV ══ -->
+<nav class="z">
+  <a href="/" class="logo">Slate <em>&</em> Silicon</a>
   <ul class="nav-links">
+    <li><a href="/">Home</a></li>
     <li><a href="/start-here/">Start Here</a></li>
     <li><a href="/laboratory/" class="active">Laboratory</a></li>
-    <li><a href="/store/">Store</a></li>
     <li><a href="/about/">About</a></li>
+    <li><a href="/store/">The Store</a></li>
+    <li><a href="/log/">The Log</a></li>
   </ul>
-  <a class="nav-cta" href="/detox-planner/">Get the Reset</a>
+  <a href="/detox-planner/" class="nav-cta">→ Free Planner</a>
+  <button class="nav-toggle" aria-label="Toggle navigation"
+    onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<main>
+<!-- ══ PAGE HERO ══ -->
+<div class="page-hero z">
+  <p class="tag">Laboratory // Active Experiments</p>
+  <h1>The<br>Laboratory.</h1>
+  <p class="body-text">A collection of small experiments for reducing digital noise and rebuilding attention. Run the test. Measure the output. Report the findings. This is not inspiration content — it's systems documentation.</p>
+</div>
 
-<section>
-  <div class="reset-container">
-    <h1>Laboratory</h1>
-    <p class="body-text">
-      A collection of small experiments for reducing digital noise and rebuilding attention.
-    </p>
+<!-- ══ TICKER ══ -->
+<div class="ticker z">
+  <div class="ticker-track">
+    <span class="ticker-item">Run the test <b>//</b></span>
+    <span class="ticker-item">Measure the output <b>//</b></span>
+    <span class="ticker-item">Report the findings <b>//</b></span>
+    <span class="ticker-item">EXP-01 // Signal Audit <b>//</b></span>
+    <span class="ticker-item">EXP-02 // Notification Fast <b>//</b></span>
+    <span class="ticker-item">EXP-03 // Single Task Block <b>//</b></span>
+    <span class="ticker-item">EXP-04 // Evening Shutdown <b>//</b></span>
+    <span class="ticker-item">Run the test <b>//</b></span>
+    <span class="ticker-item">Measure the output <b>//</b></span>
+    <span class="ticker-item">Report the findings <b>//</b></span>
+    <span class="ticker-item">EXP-01 // Signal Audit <b>//</b></span>
+    <span class="ticker-item">EXP-02 // Notification Fast <b>//</b></span>
+    <span class="ticker-item">EXP-03 // Single Task Block <b>//</b></span>
+    <span class="ticker-item">EXP-04 // Evening Shutdown <b>//</b></span>
   </div>
-</section>
+</div>
 
-<section>
-  <div class="reset-container">
-    <h2>Experiments</h2>
+<!-- ══ MAIN ══ -->
+<div class="z">
+  <div class="section">
+    <div class="lab-layout">
 
-    <div class="lab-list">
-      <a href="/lab/exp-01/" class="lab-item">
-        <span class="lab-id">EXP-01</span>
-        <h3>Signal Audit</h3>
-        <p>Track where your attention actually goes.</p>
-      </a>
+      <div>
 
-      <a href="/lab/exp-02/" class="lab-item">
-        <span class="lab-id">EXP-02</span>
-        <h3>Notification Fast</h3>
-        <p>Remove all non-essential inputs for 24 hours.</p>
-      </a>
+        <!-- EXPERIMENTS -->
+        <div class="reveal">
+          <p class="tag">EXP // Active Experiments</p>
+          <h2>Run one.<br>Observe what changes.</h2>
+          <div class="exp-list">
 
-      <a href="/lab/exp-03/" class="lab-item">
-        <span class="lab-id">EXP-03</span>
-        <h3>Single Task Block</h3>
-        <p>Work without switching for a fixed window.</p>
-      </a>
+            <a href="/lab/exp-01/" class="exp-item">
+              <div class="exp-id-block">
+                <span class="exp-id">EXP-01</span>
+                <span class="exp-status active">Active</span>
+              </div>
+              <div>
+                <h3 class="exp-title">Signal Audit</h3>
+                <p class="exp-desc">Track where your attention actually goes. Map your 24-hour attention cycle and identify the leakage windows. Standard first-run diagnostic before any other protocol.</p>
+                <div class="chip-row">
+                  <span class="chip">Diagnostic</span>
+                  <span class="chip">Attention</span>
+                  <span class="chip">Start Here</span>
+                </div>
+              </div>
+              <span class="exp-arrow">→</span>
+            </a>
 
-      <a href="/lab/exp-04/" class="lab-item">
-        <span class="lab-id">EXP-04</span>
-        <h3>Evening Shutdown</h3>
-        <p>Close your day deliberately instead of drifting.</p>
-      </a>
+            <a href="/lab/exp-02/" class="exp-item">
+              <div class="exp-id-block">
+                <span class="exp-id">EXP-02</span>
+                <span class="exp-status active">Active</span>
+              </div>
+              <div>
+                <h3 class="exp-title">Notification Fast</h3>
+                <p class="exp-desc">Remove all non-essential inputs for 24 hours. All notifications off. Measure the cognitive residue that clears when the feed goes quiet.</p>
+                <div class="chip-row">
+                  <span class="chip">Behavioral</span>
+                  <span class="chip">24hr</span>
+                  <span class="chip">Digital Friction</span>
+                </div>
+              </div>
+              <span class="exp-arrow">→</span>
+            </a>
 
-      <a href="/lab/exp-05/" class="lab-item">
-        <span class="lab-id">EXP-05</span>
-        <h3>Analog Morning</h3>
-        <p>Delay digital input for the first hour.</p>
-      </a>
+            <a href="/lab/exp-03/" class="exp-item">
+              <div class="exp-id-block">
+                <span class="exp-id">EXP-03</span>
+                <span class="exp-status active">Active</span>
+              </div>
+              <div>
+                <h3 class="exp-title">Single Task Block</h3>
+                <p class="exp-desc">Work without switching for a fixed window. One tab. One task. One hour. The simplest deep work protocol you'll ever run — and the hardest to maintain.</p>
+                <div class="chip-row">
+                  <span class="chip">Deep Work</span>
+                  <span class="chip">Focus</span>
+                  <span class="chip">90-min variant</span>
+                </div>
+              </div>
+              <span class="exp-arrow">→</span>
+            </a>
+
+            <a href="/lab/exp-04/" class="exp-item">
+              <div class="exp-id-block">
+                <span class="exp-id">EXP-04</span>
+                <span class="exp-status active">Active</span>
+              </div>
+              <div>
+                <h3 class="exp-title">Evening Shutdown</h3>
+                <p class="exp-desc">Close your day deliberately instead of drifting. Hard cutoff at 2000. Measuring cognitive residue against next-morning output quality across 8 weeks of participant data.</p>
+                <div class="chip-row">
+                  <span class="chip">Protocol</span>
+                  <span class="chip">2000 Cutoff</span>
+                  <span class="chip">Sleep Quality</span>
+                </div>
+              </div>
+              <span class="exp-arrow">→</span>
+            </a>
+
+            <a href="/lab/exp-05/" class="exp-item">
+              <div class="exp-id-block">
+                <span class="exp-id">EXP-05</span>
+                <span class="exp-status active">Active</span>
+              </div>
+              <div>
+                <h3 class="exp-title">Analog Morning</h3>
+                <p class="exp-desc">Delay digital input for the first hour. No phone. No screen. Analog only from initialization through the first 60 minutes. The first 90 minutes determine the day.</p>
+                <div class="chip-row">
+                  <span class="chip">Morning</span>
+                  <span class="chip">Analog</span>
+                  <span class="chip">Initialization</span>
+                </div>
+              </div>
+              <span class="exp-arrow">→</span>
+            </a>
+
+          </div>
+        </div>
+
+        <hr class="rule" style="margin: 4rem 0;">
+
+        <!-- CTA BLOCK -->
+        <div class="reveal">
+          <p class="tag">Baseline // Run This First</p>
+          <h2>Start with<br>the reset.</h2>
+          <p class="body-text" style="margin-top: 1rem; margin-bottom: 2rem;">If you haven't run the baseline yet, begin there. The Detox Planner is the entry point to everything else we're building here.</p>
+          <a href="/detox-planner/" class="btn btn-fill">→ Get the Reset</a>
+          <a href="/start-here/" class="btn btn-line" style="margin-left: 1.5rem;">New here? Start Here →</a>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="lab-sidebar reveal">
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Lab Stats</p>
+          <div class="sidebar-stat"><span class="sidebar-stat-label">Active Experiments</span><span class="sidebar-stat-val">5</span></div>
+          <div class="sidebar-stat"><span class="sidebar-stat-label">Subscribers</span><span class="sidebar-stat-val">6</span></div>
+          <div class="sidebar-stat"><span class="sidebar-stat-label">Since</span><span class="sidebar-stat-val">2024</span></div>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Protocol Notes</p>
+          <div class="protocol-note">
+            <strong>Rule 01</strong>
+            Run one experiment at a time. Stacking protocols contaminates the data.
+          </div>
+          <div class="protocol-note">
+            <strong>Rule 02</strong>
+            Observe for a minimum of 72 hours before drawing conclusions.
+          </div>
+          <div class="protocol-note">
+            <strong>Rule 03</strong>
+            Report findings in The Log. Community data improves the experiment.
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Free Download</p>
+          <p style="font-size:0.8rem; color:var(--muted); line-height:1.65; margin-bottom:1rem;">The Detox Planner. 7 days. 3 sectors. No app required.</p>
+          <a href="/detox-planner/" class="btn btn-fill" style="width:100%; justify-content:center;">→ Get the Planner</a>
+          <p class="form-note" style="margin-top:0.85rem;">No account. No algorithm.</p>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-title">// Status</p>
+          <div class="status"><div class="dot"></div> Laboratory: Operational</div>
+          <div class="status" style="margin-top:0.65rem;"><div class="dot"></div> The Log: every Tuesday</div>
+          <div class="status" style="margin-top:0.65rem;"><div class="dot"></div> EXP-04 collecting data</div>
+        </div>
+
+      </aside>
     </div>
   </div>
-</section>
+</div>
 
-<section>
-  <div class="reset-container">
-    <h2>Start with the reset</h2>
-    <p class="body-text">
-      If you haven’t run the baseline yet, begin there.
-    </p>
-    <a href="/detox-planner/" class="cta">Get the Reset</a>
+<!-- ══ FOOTER CTA ══ -->
+<div class="section-alt z">
+  <div class="footer-cta">
+    <div class="reveal">
+      <p class="tag">Join The Laboratory</p>
+      <h2>Run the experiments.<br><span class="cyan">Report back.</span></h2>
+      <p class="body-text">Every week a new dispatch drops in The Log. Field data from active experiments, protocol updates, and one thing to run this week. No inspiration. Just systems.</p>
+      <script async data-uid="68998098aa" src="https://slate-silicon.kit.com/68998098aa/index.js"></script>
+      <p class="form-note" style="text-align:center; margin-top:0.5rem;">No account. No algorithm. No noise.</p>
+    </div>
   </div>
-</section>
+</div>
 
-</main>
+<!-- ══ FOOTER ══ -->
+<footer class="z">
+  <a href="/" class="footer-logo">Slate &amp; Silicon</a>
+  <ul class="footer-links">
+    <li><a href="https://www.instagram.com/slate.silicon/" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://www.facebook.com/slate.silicon/" target="_blank" rel="noopener">Facebook</a></li>
+    <li><a href="https://tiktok.com/@roman.prime78" target="_blank" rel="noopener">TikTok</a></li>
+    <li><a href="https://www.youtube.com/@slate.silicon" target="_blank" rel="noopener">YouTube</a></li>
+    <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="https://www.pinterest.com/slateandsilicon/" target="_blank" rel="noopener">Pinterest</a></li>
+    <li><a href="/privacy/">Privacy</a></li>
+    <li><a href="/terms/">Terms</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Slate &amp; Silicon. All systems operational.</span>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 
 </body>
 </html>
