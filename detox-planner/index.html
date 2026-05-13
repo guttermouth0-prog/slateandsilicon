@@ -1,41 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DETOX PLANNER — Slate & Silicon</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
 <body>
-
-    <nav class="navbar">
-        <a href="/" class="logo">SLATE & SILICON</a>
-        <div class="nav-links">
-            <a href="/start-here/">*START HERE*</a>
-            <a href="/laboratory/">*LABORATORY*</a>
-        </div>
+    <nav class="z">
+        <a href="/" class="logo">Slate <em>&</em> Silicon</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/laboratory/">The Laboratory</a></li>
+            <li><a href="/log/">The Log</a></li>
+        </ul>
+        <a href="/detox-planner/" class="nav-cta">→ Free Planner</a>
     </nav>
 
-    <main class="container">
-        <header class="page-header">
-            <p class="section-label">*ISSUED TOOL*</p>
-            <h1>DETOX PLANNER</h1>
-            <p class="subtitle">Seven days without the patterns that are running you.</p>
-        </header>
+    <div class="page-hero z">
+        <p class="tag">ISSUED TOOL // PROTOCOL</p>
+        <h1>DETOX<br>PLANNER.</h1>
+        <p class="body-text">Seven days without the patterns that are running you.</p>
+    </div>
 
-        <hr class="divider">
+    <div class="z">
+        <div class="section">
+            <div class="reveal">
+                <p class="tag">01 // INITIALIZATION</p>
+                <h2 style="font-family: var(--display); font-weight: 700; text-transform: uppercase;">The Protocol</h2>
+                <p class="body-text">Add your content here. Use the "body-text" class to inherit the site's typography.</p>
+            </div>
+        </div>
+    </div>
 
-        <section class="experiment-block">
-            <p class="step-number">01 //</p>
-            <h2>THE PROTOCOL</h2>
-            <p>Your description of the first phase goes here.</p>
-        </section>
-
-        </main>
-
-    <footer class="footer">
-        <p>© 2026 SLATE & SILICON // ALL RIGHTS RESERVED</p>
+    <footer class="z">
+        <span class="footer-copy">© 2026 Slate & Silicon. All systems operational.</span>
     </footer>
 
+    <script>
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    </script>
 </body>
-</html>
