@@ -136,25 +136,37 @@ nav, .site-nav {
 }
 
 .logo {
-  display: inline-flex;
-  align-items: center;
-  gap: .75rem;
-  color: var(--bone);
-  font-size: 1.05rem;
-  line-height: 1;
-  letter-spacing: .045em;
-  text-decoration: none;
+    font-family: var(--display);
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
 }
-.logo span, .logo em { color: var(--blue); font-style: normal; }
-.signal-mark {
-  width: 1.15rem;
-  height: 1.15rem;
-  display: inline-block;
-  background:
-    linear-gradient(var(--blue), var(--blue)) 0 0 / 100% 2px no-repeat,
-    linear-gradient(var(--blue), var(--blue)) 0 50% / 72% 2px no-repeat,
-    linear-gradient(var(--blue), var(--blue)) 0 100% / 42% 2px no-repeat;
-  opacity: .95;
+
+.logo em {
+    font-family: serif; /* Stylized ampersand */
+    font-style: italic;
+    text-transform: lowercase;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* This pushes logo left and links right */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Adjust based on your layout preference */
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem; /* Spacing between links */
+    margin: 0;
+    padding: 0;
+    align-items: center;
 }
 
 .nav-links { display: flex; align-items: center; gap: clamp(.9rem, 2.4vw, 1.8rem); list-style: none; }
