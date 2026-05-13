@@ -145,9 +145,9 @@ nav, .site-nav {
 }
 
 .logo em {
-    font-family: serif; /* Stylized ampersand */
+    color: #007bff;
     font-style: italic;
-    text-transform: lowercase;
+    font-family: serif;
 }
 
 .nav-container {
