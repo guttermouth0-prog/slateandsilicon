@@ -643,10 +643,24 @@ body {
 }
 
 /* Fix CTA inside content (not nav) */
-.section .nav-cta,
-.copy-stack .nav-cta {
-  display: inline-block;
-  width: auto;
-  height: auto;
-  align-self: flex-start;
+.content-cta {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: .62rem .85rem;
+  border: 1px solid var(--blue-line);
+  background: var(--blue-dim);
+  color: var(--bone);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 18px;
+}
+
+.content-cta:hover {
+  border-color: var(--blue);
+  background: rgba(127,167,184,.18);
 }
