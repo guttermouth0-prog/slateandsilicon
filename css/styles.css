@@ -792,3 +792,43 @@ body {
   display: block;
   height: 22px;
 }
+
+/* TRUST ROW — FINAL */
+
+.trust-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.8rem 0;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.trust-item span {
+  color: var(--blue);
+  font-size: 0.7rem;
+}
+
+@media (max-width: 720px) {
+  .trust-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .trust-item {
+    font-size: 0.6rem;
+  }
+}
