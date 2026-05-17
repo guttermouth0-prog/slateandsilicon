@@ -161,17 +161,15 @@ nav, .site-nav {
 
 /* LOGO */
 .logo img {
-  height: 22px;
   display: block;
+  height: 22px;
+  width: auto;
 }
 
 .logo {
-    font-family: var(--display);
-    font-weight: 900;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 1.5rem;
-    letter-spacing: -0.02em;
+    display: inline-flex;
+  align-items: center;
+  width: auto;
 }
 
 .logo em {
