@@ -132,6 +132,7 @@ p { color: var(--muted); }
 
 /* Navigation */
 nav, .site-nav {
+  width: 100%;
   position: relative;
 }
 
@@ -582,6 +583,7 @@ body::after {
 
 nav, .site-nav {
   height: 52px !important;
+  width: 100%;
   padding: 0 16px !important;
   background: rgba(17,19,21,0.85) !important;
   backdrop-filter: blur(6px);
