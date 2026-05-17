@@ -648,7 +648,7 @@ body {
   width: fit-content;
   align-items: center;
   justify-content: center;
-  padding: .62rem .85rem;
+  padding: .38rem .85rem;
   border: 1px solid var(--blue-line);
   background: var(--blue-dim);
   color: var(--bone);
