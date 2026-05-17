@@ -761,3 +761,25 @@ body {
 .section + .section {
   margin-top: 0;
 }
+/* FORCE NAV LAYOUT (FINAL OVERRIDE) */
+.nav-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.site-nav .logo {
+  display: inline-flex !important;
+  width: auto !important;
+}
+
+.site-nav .logo img {
+  display: block;
+  height: 22px;
+}
